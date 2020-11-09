@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="@ViewBag.KeyWords" />
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="shortcut icon" href="https://www.fff21.com/template/s004/statics/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="~/css/iconfont.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/stui_block.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/stui_block_color.css" type="text/css" />
+    <link rel="stylesheet" href="~/css/stui_default.css" type="text/css" />
+    <script type="text/javascript" src="~/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/stui_default.js"></script>
+    <script type="text/javascript" src="~/js/stui_block.js"></script>
+    <script type="text/javascript" src="~/js/home.js"></script>
+    <script>var maccms = { "path": "" };</script>
+</head>
+<body>
+    <header class="stui-header__top clearfix top-fixed headroom--not-bottom top-fixed-up headroom--top" id="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="stui-header_bd clearfix">
+                    <div class="stui-header__logo">
+                        <a class="logo" href="https://www.fff21.com/" style="background: url(&quot;/template/s004/statics/img/logo.png&quot;) no-repeat;"></a>
+                    </div>
+                    <div class="stui-header__side">
+                        <ul class="stui-header__user">
+                            <li><a class="mac_user" href="javascript:;"><i class="icon iconfont icon-account"></i></a></li>
+                        </ul>
+                        <script type="text/javascript" src="~/js/jquery.autocomplete.js"></script>
+                        <div class="stui-header__search">
+                            <form id="search" name="search" method="get" action="#" onsubmit="return qrsearch();">
+                                <input type="text" id="wd" name="wd" class="mac_wd form-control mac_input" value="" placeholder="请输入关键词..." autocomplete="off" />
+                                <button class="submit" id="searchbutton" type="submit" name="submit"><i class="icon iconfont icon-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <ul class="stui-header__menu type-slide">
+                        <li class="active"><a href="#">首页</a></li>
+                        <li><a href="#">电影</a></li>
+                        <li><a href="#">连续剧</a></li>
+                        <li><a href="#">综艺</a></li>
+                        <li><a href="#">动漫</a></li>
+                        <li><a href="#">资讯</a></li>
+                        <li><a href="#">专题</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <script type="text/javascript">$(".stui-header__user li,.stui-header__menu li").click(function () { $(this).find(".dropdown").toggle(); if (stui.browser.useragent.mobile) { $(".MacPlayer").toggle(); } }); if (stui.browser.useragent.mobile) { $(".stui-header__logo .logo").css("background", "url(/template/s004/statics/img/logo.png) no-repeat"); } else { $(".stui-header__logo .logo").css("background", "url(/template/s004/statics/img/logo.png) no-repeat"); }</script>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="stui-foot clearfix">
+                <div class="col-pd text-center hidden-xs">
+                    Copyright
+                    <span class="fontArial"></span>2013-2020
+                    <a href="#" target="_blank">免费手机影院</a> Inc. All Rights Reserved.
+                    <br />
+                    <a href="https://www.fff21.com/baidumap/1.xml">网站地图</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="stui-extra clearfix">
+        <li><a class="backtop" href="javascript:scroll(0,0)" style="display: none;"><i class="icon iconfont icon-less"></i></a></li>
+        <li class="hidden-xs"><a class="copylink" href="javascript:;"><i class="icon iconfont icon-share"></i></a></li>
+        <li class="visible-xs"><a class="open-share" href="javascript:;"><i class="icon iconfont icon-share"></i></a></li>
+        <li class="hidden-xs">
+            <span><i class="icon iconfont icon-qrcode"></i></span>
+            <div class="sideslip">
+                <div class="col-pd text-center">
+                    <p id="qrcode" title="https://www.fff21.com/">
+                        <canvas width="150" height="150" style="display: none;"></canvas><img class="img-responsive" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAKbUlEQVR4Xu2d2XLrOAwFnf//6EzZd6YqpBih1QMqyz15DbgBjYWQbL89Ho/3xxf9vb8fl357e1O7medazWNkyGbInulZyR7nPdG5yVm6ZJ5WDFgftLkyUqXsgHXUUMCadBKwKjdi/w9YAYuRclHqAJbxWLrmnDJsbWD3aNYna5FUuNIROf9OGWq3Sm51/oA1aY3ANys6YB0vXAErYFUBqfx/ItbUyrBpJhFr1EDAClhl9DECGixTQ9hoYGqcpzLMHmlBXUWozgJ/V4OU2INARedBNZYxGtmAlVkpwOwxYF1/ykFs9nL0ufNOB1Z0k3msTMAaNWD1aJyRrBWwFoSatGbGfOaYSYVFyCJkE4PY6ETmJh5LzmFTahX1P6sdzdnsOeY90nm+XSq0yiYKqIpwCogFkpyN7DFgNTQfE7GOBXbAClgmSA1jyHtlxPloCqs2TOdJKmyoFWkKrYxGAHnKJGLdGLG6lE2Mb2osMoYCSprIRoac/a+LWAFrxCJgETcpIl9neiDbIdHH9KMSsYD2ScgkUebuugMcDT2XDFjThymssY1BLHz2pkR6RKQfRtKMWYtG3i5dk3mIjH67gUxOZIhBjIw1iElpz7XIHgNWItapT9ioGrACVsAi6eZEJqkQ3C5TY12nDIF1fVo/wqYZUrz/RBlav5Eaj9SP3nL1yG//gVUC36p4D1jX3w6tceESAWvSFek/7ZJJxOLgbimMf2I0Inv+VWC97+yICgC/un4g6iB7JEcndRApBcieyX46Zd4C1qhOYqSAVSMYsIoaa6XCgBWwag0ErMs6IgMSsQIW4eSyDAKLFJldHWubZnbtcaVR024gKXXVj6PjLltevuJM1wlYk6YIoAGrxitgBaxTSoijLaMqaTeYyW3/Jamw/hJrYw+S0jvT7q0f/6oDqHuJrrNjvWuPnZ33eY8ENNOfW9V8ZK2XPe78tpldRgtY9QPngAW+dY+EbJuKd8GfiNX0MyTEQywgdpyt36rUQ84asAJWGbQMoAFLgmW8lowprfyvgDE2mZsCUUU1eiujxTHZeyVj9E/10Va8k03uMj4t3itFkxS7uinRcbMcqQPNnukYYjPiMMtzdN0KySYD1mimgAV+QzBgjdCQlBawAtZAjXGiv77GovnZyBGDmHntGBJVKBBVLWLPTovljvWtPpY15p2/sGqVa8GpxllFknN01ZMBq7IifP8HTNMmErCu14VU+bd+rpB4Ot14h1zA+mZg7bzNWPhM6iFg2bOSc5D1rQN1vYxY1W6f9fVUxLLKJkoiBiENSTIPMaw9a9f6RGfkgmFrtYAl3ooIWPVLhQErYJ322hKxFg/BSTpIjTVq6ctrLPLOuwmHxENsKiKg3VmH2f3YOsyMu7tWRJ/SCVgWnfNxBpDPbmGVjQLWpCGifGr2XemSrj/LkbORyG+jc1fGWM2TiFVQQZQfsI4f5kB9LONZXaGXeqyJRsTTCTREP2Sepww5xy7YyTmwPchDaLNgwKIojXIBa9Jbl0LsNZmsT0xtogFxPLJ2ItZCS8SwxGgBa6xXbOSnIH+UIw6SVNjUaCUGIgYh8/yqiGUapERJlGwyV9WjWc1BjG0iqNnvChg7z6qPZXXddf62dgNRij2snburR2Tm6dozmSdgLT6AQaIIUe5OTwtYowaIzRKxipusTaldzkDm+TERi/Sx6IGvypEbD5Ghyr66PypvvZqMo3uo5GyU1+MCVmWS+v8EkJ01Z73DY0efRueANbUXiEKIQYhMwDq+iYqeFRLlGhmS5ohMUmGtfeJoVNfkghOwapuUEolYi4g1N0gJ2aWmPxEwj2tobdL1SImcjZwDeTVoyRB7kEhD4Cdnx/YIWESd572dLuPblB6wQIFNooFVJAGAYEb2mIg1aalL+eQ6S8IqkXmulVQ4apzogzjRLIPtsSsVdkUVWhvscghyji4nMob+P2MIfERmtYfDO+9dBiIGsTLLg4AvhzNGIHsMWEcNBKyCtoBVv3iYiCVCVsAKWAKbekjAkmB1fR03uV6TGwaZh95MzHpk/RpH9tDX1mZkfXLp2VpPB6xzMxEDdV4mTI+MANq5R+J8bb9MQRYzEYSmIgKA8VAyb6fRApa4TQWsOon9WrC+W1il9VRXNCINwS6ZGrO1BFnfOLG1/TJikzdISTowhiUHCViL5uOmby8k9qDOgN7HClijOknEIDLUSFX02WkfMnci1qQBcjHYKROwwMfVkwqvR7WABcAySrIwkihC6gVav1Vn23kOkorIOawMaSOt5m6rsSrl7+z1POcmxiVXeWLIquahuiAOQvZjoSH6CFjgtRmiSGLIgHWe9l+O3tVuoF76UY5EGZLSErGO3wFqnIjYg0TZgAU+JUMchhjEOgiJoD8iFRIiiQwxiJ2HjCMyxNjEaOSsVMZASuCzNa6e27zdYI1mC0Ezzu7RpBAKDZELWJOWuhRC5iHQEJlErGNtRpwYOUgi1qimRKxzfRColsU78XQrQza18xlb1/pmj7ZWs+PIWbe2TXZFLF30iSf3RomfjSHQEBliNKKjgNUEhDFawOrRAKlvSV2aVLjQEgGbyCRiPR7DlxvZ+skom/RWSLro8dc/s5BzEJmAJcAi4dCGVQLJnfB3nYPsmZz9bhnr2G2f0iHX9C6lECNZGRJpzDnIfsy8u8cELHB56EphxpgBa/FSH0kHiVjnuP11YO36kSbj1avimdRz5BJg57Fz2/OT1GMiLzlHJ/zqN6Gt0sg4Ex2J0gLWUQMEUGKPpf4TsQjuo4xVNlkpEYtoScgQoxnlJ2IlYpU4Biz3nVVVK6W1xiLvvJeWlgJdgNDlyXqV8jvXsg+YTW1koSG3/eXcAescFZKabZoNWNRNL8qRCGINa42diDVqIBELQE1ADlibwDLKBzZ9iZDaoMuwNmKRPRKZrnOQ2sjarDMbHM5L3iCl4FRydxokYFXWYF9LUM+ylkBvN9jJK68lntbpVWa9rohhz9G1/sqGdk+Eh4A1aYlEVSJTORUxzlMmYAFN3WmQpMLaIF8escwGrKcZ+FYXg1qtawmSLkk0IvN09bHsWedxds/LNEuK94B1brpOQDqNexW4zrVRjRWwAtZ/GqAsBKyJGeK1SYV1LPy1YBFASAojMuQqT2rO2lx/JOxjlsoh7B7RQ2g7OSkESWFOZKwhK8V+R6OR2+1Xwx+wip5VwBo+u/zSFqmpAlbAGjRAskPAAp8rTCocNRCwQKQhNR4tjj/KEY+1dZDZD03XRh/krORS9EqhP7FB2qmAyrhkrYB11EDAKsgKWKOCErGafv8nYG0Eq0oX9P+kWDQF9t3rd9UvpGdIIgTpYxGZrv4grrGo4Sq5gFV7/y4dBSxwAyRe3OV9JBWS/VDDBqwqPC3+v0tpdCtd6ycV1hpHt8J6GibRZVgSIRKxxsczNGJWNS7VPfpZOYbNdSm6yeqwz/+TuUxaIwYx874KXPDrY11zd+mH9OyWxft1PPwIclgSeQJW/fCY6JpAHLBAjUeUdGdUWTkIMfbOtgUJG+jtBjJRlwzxokQs9wtdXfUssXXA2vS70V1R5TdFrH8AZxuP9ZMzuN4AAAAASUVORK5CYII=" style="display: block;" />
+                    </p>
+                    <p class="margin-0">扫码用手机访问</p>
+                </div>
+            </div>
+        </li>
+        <li><a href="https://www.fff21.com/gbook.html"><i class="icon iconfont icon-comments"></i></a></li>
+    </ul>
+    <div class="hide">
+
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
