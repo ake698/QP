@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using QP.Entity;
 
 namespace QP
 {
@@ -22,6 +24,15 @@ namespace QP
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<QPContext>(options =>
+            {
+                //o.UseInMemoryDatabase("Demo")
+                //options.UseMySQL(Configuration.GetConnectionString("MysqlSqlServerConnection"),
+                //    p => p.MigrationsAssembly("Diary.Entity"));
+                options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection"),
+                    p => p.MigrationsAssembly("QP.Entity"));
+            }, ServiceLifetime.Scoped);
+
             services.AddControllersWithViews();
         }
 
@@ -46,7 +57,7 @@ namespace QP
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=QP}/{action=Index}/{id?}");
+                    pattern: "{controller=QP}/{action=Play}/{id?}");
             });
         }
     }
