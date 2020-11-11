@@ -4,7 +4,7 @@ using System.Text;
 
 namespace QP.Entity
 {
-    public class SeriesType : Entity<int>
+    public class SeriesType : BaseEntity<int>
     {
         public string Name { get; set; }
     }

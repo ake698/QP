@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace QP.Entity
+﻿namespace QP.Entity
 {
     public class VideoBasicInfo : FullEntity<int>
     {
+        public CategoryType CategoryType { get; set; }
         public int CategoryTypeId { get; set; }
         public string CategoryTypeNames { get; set; }
         public int SeriesTypeId { get; set; }
