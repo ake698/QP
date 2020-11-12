@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QP.Entity;
 
 namespace QP.Entity.Migrations
 {
     [DbContext(typeof(QPContext))]
-    partial class QPContextModelSnapshot : ModelSnapshot
+    [Migration("20201111092226_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,167 +52,6 @@ namespace QP.Entity.Migrations
                             IsDelete = false,
                             Name = "动作片",
                             SeriesTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            IsDelete = false,
-                            Name = "喜剧",
-                            SeriesTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            IsDelete = false,
-                            Name = "爱情片",
-                            SeriesTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            IsDelete = false,
-                            Name = "科幻片",
-                            SeriesTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            IsDelete = false,
-                            Name = "恐怖片",
-                            SeriesTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 11,
-                            IsDelete = false,
-                            Name = "剧情片",
-                            SeriesTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 12,
-                            IsDelete = false,
-                            Name = "战争片",
-                            SeriesTypeId = 1
-                        },
-                        new
-                        {
-                            Id = 13,
-                            IsDelete = false,
-                            Name = "国产剧",
-                            SeriesTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 14,
-                            IsDelete = false,
-                            Name = "港剧",
-                            SeriesTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 15,
-                            IsDelete = false,
-                            Name = "韩剧",
-                            SeriesTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 16,
-                            IsDelete = false,
-                            Name = "欧美剧",
-                            SeriesTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 20,
-                            IsDelete = false,
-                            Name = "纪录片",
-                            SeriesTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 21,
-                            IsDelete = false,
-                            Name = "微电影",
-                            SeriesTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 22,
-                            IsDelete = false,
-                            Name = "台湾剧",
-                            SeriesTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 23,
-                            IsDelete = false,
-                            Name = "日剧",
-                            SeriesTypeId = 2
-                        },
-                        new
-                        {
-                            Id = 25,
-                            IsDelete = false,
-                            Name = "大陆综艺",
-                            SeriesTypeId = 3
-                        },
-                        new
-                        {
-                            Id = 26,
-                            IsDelete = false,
-                            Name = "港台综艺",
-                            SeriesTypeId = 3
-                        },
-                        new
-                        {
-                            Id = 27,
-                            IsDelete = false,
-                            Name = "日韩综艺",
-                            SeriesTypeId = 3
-                        },
-                        new
-                        {
-                            Id = 28,
-                            IsDelete = false,
-                            Name = "欧美综艺",
-                            SeriesTypeId = 3
-                        },
-                        new
-                        {
-                            Id = 29,
-                            IsDelete = false,
-                            Name = "国产动漫",
-                            SeriesTypeId = 4
-                        },
-                        new
-                        {
-                            Id = 30,
-                            IsDelete = false,
-                            Name = "日韩动漫",
-                            SeriesTypeId = 4
-                        },
-                        new
-                        {
-                            Id = 31,
-                            IsDelete = false,
-                            Name = "欧美动漫",
-                            SeriesTypeId = 4
-                        },
-                        new
-                        {
-                            Id = 32,
-                            IsDelete = false,
-                            Name = "港台动漫",
-                            SeriesTypeId = 4
-                        },
-                        new
-                        {
-                            Id = 33,
-                            IsDelete = false,
-                            Name = "其他",
-                            SeriesTypeId = 4
                         });
                 });
 

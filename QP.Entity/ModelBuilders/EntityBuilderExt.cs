@@ -23,7 +23,7 @@ namespace QP.Entity.ModelBuilders
 
             builder.Property(p => p.CreationTime)
                 .HasColumnName("CreationTime")
-                .HasDefaultValueSql("(getdate())");
+                .HasDefaultValueSql("(now())");
 
             builder.Property(p => p.LastModificationTime)
                 .HasColumnName("LastModificationTime");

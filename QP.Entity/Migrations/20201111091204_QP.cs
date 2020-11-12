@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QP.Entity.Migrations
@@ -12,7 +13,7 @@ namespace QP.Entity.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IsDelete = table.Column<bool>(nullable: false, defaultValue: false),
                     Name = table.Column<string>(nullable: true),
                     Link = table.Column<string>(nullable: true)
@@ -27,7 +28,7 @@ namespace QP.Entity.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IsDelete = table.Column<bool>(nullable: false, defaultValue: false),
                     Name = table.Column<string>(nullable: true)
                 },
@@ -41,7 +42,7 @@ namespace QP.Entity.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IsDelete = table.Column<bool>(nullable: false, defaultValue: false),
                     Name = table.Column<string>(nullable: true),
                     Icon = table.Column<string>(nullable: true),
@@ -63,9 +64,9 @@ namespace QP.Entity.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IsDelete = table.Column<bool>(nullable: false, defaultValue: false),
-                    CreationTime = table.Column<DateTime>(nullable: false, defaultValueSql: "(getdate())"),
+                    CreationTime = table.Column<DateTime>(nullable: false, defaultValueSql: "(now())"),
                     LastModificationTime = table.Column<DateTime>(nullable: false),
                     CategoryTypeId = table.Column<int>(nullable: false),
                     CategoryTypeNames = table.Column<string>(nullable: true),
@@ -98,9 +99,9 @@ namespace QP.Entity.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IsDelete = table.Column<bool>(nullable: false, defaultValue: false),
-                    CreationTime = table.Column<DateTime>(nullable: false, defaultValueSql: "(getdate())"),
+                    CreationTime = table.Column<DateTime>(nullable: false, defaultValueSql: "(now())"),
                     LastModificationTime = table.Column<DateTime>(nullable: false),
                     BasicInfoId = table.Column<int>(nullable: false),
                     ResourceId = table.Column<int>(nullable: false),
@@ -135,11 +136,6 @@ namespace QP.Entity.Migrations
                 name: "IX_Vod_BasicInfo_CategoryTypeId",
                 table: "Vod_BasicInfo",
                 column: "CategoryTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Vod_BasicInfo_SeriesTypeId",
-                table: "Vod_BasicInfo",
-                column: "SeriesTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vod_PlayInfo_BasicInfoId",
