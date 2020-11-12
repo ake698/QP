@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace QP.Entity
+﻿namespace QP.Entity
 {
     public class Resource : BaseEntity
     {

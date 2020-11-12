@@ -12,7 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\QP.BLL\QP.BLL.csproj" />
+    <ProjectReference Include="..\QP.Bussiness\QP.Bussiness.csproj" />
+    <ProjectReference Include="..\QP.DAL\QP.DAL.csproj" />
     <ProjectReference Include="..\QP.Entity\QP.Entity.csproj" />
+    <ProjectReference Include="..\QP.IBLL\QP.IBLL.csproj" />
+    <ProjectReference Include="..\QP.IDAL\QP.IDAL.csproj" />
   </ItemGroup>
 
 </Project>

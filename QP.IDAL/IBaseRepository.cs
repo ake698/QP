@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace QP.IDAL
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IBaseRepository<T> where T : BaseEntity
     {
         Task<T> CreateAsync(T model, bool saved = true);
         Task<List<T>> CreateListAsync(List<T> models, bool saved = true);

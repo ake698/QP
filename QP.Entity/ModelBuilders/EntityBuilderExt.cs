@@ -5,7 +5,7 @@ namespace QP.Entity.ModelBuilders
 {
     public static class EntityBuilderExt
     {
-        public static void BuilderBaseEntity<T>(this EntityTypeBuilder<T> builder) where T : BaseEntity<int>
+        public static void BuilderBaseEntity<T>(this EntityTypeBuilder<T> builder) where T : BaseEntity
         {
             builder.HasKey(p => p.Id);
 
@@ -17,7 +17,7 @@ namespace QP.Entity.ModelBuilders
                 .HasDefaultValue(false);
         }
 
-        public static void BuilderFullEntity<T>(this EntityTypeBuilder<T> builder) where T : FullEntity<int>
+        public static void BuilderFullEntity<T>(this EntityTypeBuilder<T> builder) where T : FullEntity
         {
             builder.BuilderBaseEntity<T>();
 

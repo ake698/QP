@@ -5,8 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QP.Bussiness\QP.Bussiness.csproj" />
-    <ProjectReference Include="..\QP.Entity\QP.Entity.csproj" />
+    <Folder Include="Resources\" />
+    <Folder Include="BasicInfos\" />
+    <Folder Include="PlayInfos\" />
   </ItemGroup>
 
 </Project>

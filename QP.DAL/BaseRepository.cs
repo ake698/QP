@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace QP.DAL
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         private readonly QPContext _db;
-        public Repository(QPContext db)
+        public BaseRepository(QPContext db)
         {
             _db = db;
         }

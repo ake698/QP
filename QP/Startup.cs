@@ -8,7 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using QP.DAL;
 using QP.Entity;
+using QP.Extensions;
+using QP.IDAL;
 
 namespace QP
 {
@@ -32,6 +35,17 @@ namespace QP
                 //options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection"),
                 //    p => p.MigrationsAssembly("QP.Entity"));
             }, ServiceLifetime.Scoped);
+            // 单个泛型注入
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
+            // 批量注入
+            services.RegisterServices(new List<string> {
+                //"QP.DAL",
+                "QP.BLL"
+            });
+
+            // 添加AutoMapper
+            services.AddAutoMapperAssembly("QP.BLL");
 
             services.AddControllersWithViews();
         }

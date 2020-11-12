@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QP.IBLL
+namespace QP.Bussiness
 {
     public class Class1
     {
