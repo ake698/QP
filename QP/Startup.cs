@@ -27,10 +27,10 @@ namespace QP
             services.AddDbContext<QPContext>(options =>
             {
                 //o.UseInMemoryDatabase("Demo")
-                //options.UseMySQL(Configuration.GetConnectionString("MysqlSqlServerConnection"),
-                //    p => p.MigrationsAssembly("Diary.Entity"));
-                options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection"),
+                options.UseMySql(Configuration.GetConnectionString("MysqlServerConnection"),
                     p => p.MigrationsAssembly("QP.Entity"));
+                //options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection"),
+                //    p => p.MigrationsAssembly("QP.Entity"));
             }, ServiceLifetime.Scoped);
 
             services.AddControllersWithViews();

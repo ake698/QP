@@ -1,7 +1,7 @@
 ﻿namespace QP.Entity
 {
-    public class CategoryType : BaseEntity<int>
-    {
+    public class CategoryType : BaseEntity
+    { 
         public string Name { get; set; }
         public string Icon { get; set; }
         public SeriesType SeriesType { get; set; }

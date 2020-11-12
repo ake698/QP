@@ -1,6 +1,6 @@
 ﻿namespace QP.Entity
 {
-    public class VideoBasicInfo : FullEntity<int>
+    public class VideoBasicInfo : FullEntity
     {
         public CategoryType CategoryType { get; set; }
         public int CategoryTypeId { get; set; }
@@ -16,6 +16,6 @@
         public string Remark { get; set; }
         public string Country { get; set; }
         public string Language { get; set; }
-        public int Year { get; set; }
+        public string Year { get; set; }
     }
 }

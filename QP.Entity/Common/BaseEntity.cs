@@ -2,9 +2,9 @@
 
 namespace QP.Entity
 {
-    public abstract class BaseEntity<T> : IHasSoftDelete
+    public abstract class BaseEntity : IHasSoftDelete
     {
-        public virtual T Id { get; set; }
+        public virtual int Id { get; set; }
         public virtual bool IsDelete { get; set; }
     }
 }
