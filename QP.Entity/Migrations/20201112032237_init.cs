@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QP.Entity.Migrations
 {
-    public partial class QP : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,8 +66,8 @@ namespace QP.Entity.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IsDelete = table.Column<bool>(nullable: false, defaultValue: false),
-                    CreationTime = table.Column<DateTime>(nullable: false, defaultValueSql: "(now())"),
-                    LastModificationTime = table.Column<DateTime>(nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime", maxLength: 0, nullable: false),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime", maxLength: 0, nullable: false),
                     CategoryTypeId = table.Column<int>(nullable: false),
                     CategoryTypeNames = table.Column<string>(nullable: true),
                     SeriesTypeId = table.Column<int>(nullable: false),
@@ -101,8 +101,8 @@ namespace QP.Entity.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     IsDelete = table.Column<bool>(nullable: false, defaultValue: false),
-                    CreationTime = table.Column<DateTime>(nullable: false, defaultValueSql: "(now())"),
-                    LastModificationTime = table.Column<DateTime>(nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime", maxLength: 0, nullable: false),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime", maxLength: 0, nullable: false),
                     BasicInfoId = table.Column<int>(nullable: false),
                     ResourceId = table.Column<int>(nullable: false),
                     VodId = table.Column<int>(nullable: false),
@@ -125,6 +125,48 @@ namespace QP.Entity.Migrations
                         principalTable: "data_Resource",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "data_Series",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "电影" },
+                    { 2, "电视剧" },
+                    { 3, "综艺" },
+                    { 4, "动画" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "data_Category",
+                columns: new[] { "Id", "Icon", "Name", "SeriesTypeId" },
+                values: new object[,]
+                {
+                    { 6, null, "动作片", 1 },
+                    { 31, null, "欧美动漫", 4 },
+                    { 30, null, "日韩动漫", 4 },
+                    { 29, null, "国产动漫", 4 },
+                    { 28, null, "欧美综艺", 3 },
+                    { 27, null, "日韩综艺", 3 },
+                    { 26, null, "港台综艺", 3 },
+                    { 25, null, "大陆综艺", 3 },
+                    { 23, null, "日剧", 2 },
+                    { 22, null, "台湾剧", 2 },
+                    { 21, null, "微电影", 2 },
+                    { 20, null, "纪录片", 2 },
+                    { 16, null, "欧美剧", 2 },
+                    { 15, null, "韩剧", 2 },
+                    { 14, null, "港剧", 2 },
+                    { 13, null, "国产剧", 2 },
+                    { 12, null, "战争片", 1 },
+                    { 11, null, "剧情片", 1 },
+                    { 10, null, "恐怖片", 1 },
+                    { 9, null, "科幻片", 1 },
+                    { 8, null, "爱情片", 1 },
+                    { 7, null, "喜剧", 1 },
+                    { 32, null, "港台动漫", 4 },
+                    { 33, null, "其他", 4 }
                 });
 
             migrationBuilder.CreateIndex(

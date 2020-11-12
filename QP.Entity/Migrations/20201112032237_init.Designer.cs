@@ -9,8 +9,8 @@ using QP.Entity;
 namespace QP.Entity.Migrations
 {
     [DbContext(typeof(QPContext))]
-    [Migration("20201111091204_QP")]
-    partial class QP
+    [Migration("20201112032237_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,6 +44,176 @@ namespace QP.Entity.Migrations
                     b.HasIndex("SeriesTypeId");
 
                     b.ToTable("data_Category");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 6,
+                            IsDelete = false,
+                            Name = "动作片",
+                            SeriesTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            IsDelete = false,
+                            Name = "喜剧",
+                            SeriesTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            IsDelete = false,
+                            Name = "爱情片",
+                            SeriesTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            IsDelete = false,
+                            Name = "科幻片",
+                            SeriesTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            IsDelete = false,
+                            Name = "恐怖片",
+                            SeriesTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 11,
+                            IsDelete = false,
+                            Name = "剧情片",
+                            SeriesTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 12,
+                            IsDelete = false,
+                            Name = "战争片",
+                            SeriesTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            IsDelete = false,
+                            Name = "国产剧",
+                            SeriesTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 14,
+                            IsDelete = false,
+                            Name = "港剧",
+                            SeriesTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 15,
+                            IsDelete = false,
+                            Name = "韩剧",
+                            SeriesTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 16,
+                            IsDelete = false,
+                            Name = "欧美剧",
+                            SeriesTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 20,
+                            IsDelete = false,
+                            Name = "纪录片",
+                            SeriesTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 21,
+                            IsDelete = false,
+                            Name = "微电影",
+                            SeriesTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 22,
+                            IsDelete = false,
+                            Name = "台湾剧",
+                            SeriesTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 23,
+                            IsDelete = false,
+                            Name = "日剧",
+                            SeriesTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 25,
+                            IsDelete = false,
+                            Name = "大陆综艺",
+                            SeriesTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 26,
+                            IsDelete = false,
+                            Name = "港台综艺",
+                            SeriesTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 27,
+                            IsDelete = false,
+                            Name = "日韩综艺",
+                            SeriesTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 28,
+                            IsDelete = false,
+                            Name = "欧美综艺",
+                            SeriesTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 29,
+                            IsDelete = false,
+                            Name = "国产动漫",
+                            SeriesTypeId = 4
+                        },
+                        new
+                        {
+                            Id = 30,
+                            IsDelete = false,
+                            Name = "日韩动漫",
+                            SeriesTypeId = 4
+                        },
+                        new
+                        {
+                            Id = 31,
+                            IsDelete = false,
+                            Name = "欧美动漫",
+                            SeriesTypeId = 4
+                        },
+                        new
+                        {
+                            Id = 32,
+                            IsDelete = false,
+                            Name = "港台动漫",
+                            SeriesTypeId = 4
+                        },
+                        new
+                        {
+                            Id = 33,
+                            IsDelete = false,
+                            Name = "其他",
+                            SeriesTypeId = 4
+                        });
                 });
 
             modelBuilder.Entity("QP.Entity.Resource", b =>
@@ -85,6 +255,32 @@ namespace QP.Entity.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("data_Series");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsDelete = false,
+                            Name = "电影"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsDelete = false,
+                            Name = "电视剧"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsDelete = false,
+                            Name = "综艺"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsDelete = false,
+                            Name = "动画"
+                        });
                 });
 
             modelBuilder.Entity("QP.Entity.VideoBasicInfo", b =>
@@ -109,10 +305,9 @@ namespace QP.Entity.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreationTime")
-                        .ValueGeneratedOnAdd()
                         .HasColumnName("CreationTime")
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("(now())");
+                        .HasColumnType("datetime")
+                        .HasMaxLength(0);
 
                     b.Property<string>("Describes")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -136,7 +331,8 @@ namespace QP.Entity.Migrations
 
                     b.Property<DateTime>("LastModificationTime")
                         .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime")
+                        .HasMaxLength(0);
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -167,10 +363,9 @@ namespace QP.Entity.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
-                        .ValueGeneratedOnAdd()
                         .HasColumnName("CreationTime")
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("(now())");
+                        .HasColumnType("datetime")
+                        .HasMaxLength(0);
 
                     b.Property<bool>("IsDelete")
                         .ValueGeneratedOnAdd()
@@ -182,7 +377,8 @@ namespace QP.Entity.Migrations
 
                     b.Property<DateTime>("LastModificationTime")
                         .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime")
+                        .HasMaxLength(0);
 
                     b.Property<string>("M3u8")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

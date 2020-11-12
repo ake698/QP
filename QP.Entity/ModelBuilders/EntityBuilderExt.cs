@@ -22,10 +22,14 @@ namespace QP.Entity.ModelBuilders
             builder.BuilderBaseEntity<T>();
 
             builder.Property(p => p.CreationTime)
-                .HasColumnName("CreationTime")
-                .HasDefaultValueSql("(now())");
+                .HasMaxLength(0)
+                .HasColumnType("datetime") //低版本mysql中需要指定为datetime
+                .HasColumnName("CreationTime");
+                //.HasDefaultValueSql("(now())");
 
             builder.Property(p => p.LastModificationTime)
+                .HasMaxLength(0)
+                .HasColumnType("datetime")
                 .HasColumnName("LastModificationTime");
         }
     }

@@ -234,6 +234,15 @@ namespace QP.Entity.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("data_Resource");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsDelete = false,
+                            Link = "http://api.iokzy.com/",
+                            Name = "OK"
+                        });
                 });
 
             modelBuilder.Entity("QP.Entity.SeriesType", b =>
@@ -303,10 +312,9 @@ namespace QP.Entity.Migrations
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("CreationTime")
-                        .ValueGeneratedOnAdd()
                         .HasColumnName("CreationTime")
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("(now())");
+                        .HasColumnType("datetime")
+                        .HasMaxLength(0);
 
                     b.Property<string>("Describes")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -330,7 +338,8 @@ namespace QP.Entity.Migrations
 
                     b.Property<DateTime>("LastModificationTime")
                         .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime")
+                        .HasMaxLength(0);
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -361,10 +370,9 @@ namespace QP.Entity.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
-                        .ValueGeneratedOnAdd()
                         .HasColumnName("CreationTime")
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("(now())");
+                        .HasColumnType("datetime")
+                        .HasMaxLength(0);
 
                     b.Property<bool>("IsDelete")
                         .ValueGeneratedOnAdd()
@@ -376,7 +384,8 @@ namespace QP.Entity.Migrations
 
                     b.Property<DateTime>("LastModificationTime")
                         .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime")
+                        .HasMaxLength(0);
 
                     b.Property<string>("M3u8")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
