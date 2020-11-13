@@ -4,8 +4,6 @@ using QP.Entity;
 using QP.IBLL;
 using QP.IDAL;
 using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace QP.BLL
 {

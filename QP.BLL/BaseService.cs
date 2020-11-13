@@ -48,11 +48,13 @@ namespace QP.BLL
             return _mapper.Map<List<R>>(entities);
         }
 
-        public async Task<List<R>> GetListOrderBy<Tkey>(Expression<Func<T, bool>> wherePredicate, Expression<Func<T, Tkey>> orderPredicate, bool asc = true, int size = -1)
+        public async Task<List<R>> GetListOrderBy<Tkey>(Expression<Func<T, bool>> wherePredicate = null, Expression<Func<T, Tkey>> orderPredicate = null, bool asc = false, int size = -1)
         {
             var entities = _repository.GetByPredicate(wherePredicate);
             if(orderPredicate != null)
                 entities = asc ? entities.OrderBy(orderPredicate) : entities.OrderByDescending(orderPredicate);
+            if (size > 0)
+                entities = entities.Take(size);
             return _mapper.Map<List<R>>(await entities.ToListAsync());
         }
 
@@ -61,9 +63,11 @@ namespace QP.BLL
             throw new NotImplementedException();
         }
 
-        public async Task<PageResultDto<R>> GetListPageAsync(Expression<Func<T, bool>> predicate, int page = 1, int pageSize = 10, int pageListSize = 5)
+        public async Task<PageResultDto<R>> GetListPageAsync<TKey>(Expression<Func<T, bool>> wherePredicate = null, Expression<Func<T, TKey>> orderPredicate = null, int page = 1, int pageSize = 10, int pageListSize = 5, bool asc = false)
         {
-            var datas = _repository.GetByPredicate(predicate);
+            var datas = _repository.GetByPredicate(wherePredicate);
+            if (orderPredicate != null)
+                datas = asc ? datas.OrderBy(orderPredicate) : datas.OrderByDescending(orderPredicate);
             var curPageData = await _repository.PageAsync(datas, pageSize, page).ToListAsync();
             var dataCounts = datas.Count();
             var maxPage = dataCounts / pageSize;
@@ -105,6 +109,5 @@ namespace QP.BLL
 
         }
 
-        
     }
 }

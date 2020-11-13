@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QP.Bussiness;
+using QP.Bussiness.Enums;
 using QP.Entity;
 using QP.IBLL;
 using QP.Models;
@@ -29,8 +30,14 @@ namespace QP.Controllers
         [Route("/index")]
         public async Task<IActionResult> Index()
         {
-            var recents = await _basicInfoService.GetListOrderBy(null, x => x.LastModificationTime, false, 7);
+            var recents = await _basicInfoService.GetListOrderBy(orderPredicate:x => x.LastModificationTime, size: 19);
+            ViewBag.recents = recents.Take(6);
+            ViewBag.recentsSim = recents.Skip(6);
 
+            for (int i = 1; i <= (int)SeriesTypeEnum.VARIETY; i++)
+            {
+
+            }
             var categoryDtos = await _categoryService.GetListAsync(x => x.SeriesTypeId == 1);
             ViewBag.category = categoryDtos;
             return View();
@@ -62,7 +69,8 @@ namespace QP.Controllers
         public async Task<PageResultDto<BasicInfoDto>> Test2()
         {
             var recents = await _basicInfoService.GetListOrderBy(null, x => x.LastModificationTime, false, 7);
-            var pageDto = await _basicInfoService.GetListPageAsync(null);
+            var movices = await _basicInfoService.GetListOrderBy(x => x.SeriesTypeId == (int)SeriesTypeEnum.Movie, x => x.LastModificationTime, false, 6);
+            var pageDto = await _basicInfoService.GetListPageAsync(orderPredicate:x => x.LastModificationTime);
             return pageDto;
         }
 
