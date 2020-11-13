@@ -16,5 +16,6 @@
         public string Country { get; set; }
         public string Language { get; set; }
         public string Year { get; set; }
+        public int Count { get; set; }
     }
 }

@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace QP.Bussiness.ViewDto
+namespace QP.Bussiness
 {
     public class IndexTypeViewDto
     {
-        List<BasicInfoDto> MainInfo { get; set; }
-        List<BasicInfoDto> TopInfo { get; set; }
+        public List<BasicInfoDto> Recommends { get; set; }
+        public List<BasicInfoDto> RecommendTops { get; set; }
 
-        List<CategoryTypeDto> CategoryTypes { get; set; }
+        public List<CategoryTypeDto> CategoryTypes { get; set; }
+        public SeriesTypeDto SeriesType { get; set; }
     }
 }

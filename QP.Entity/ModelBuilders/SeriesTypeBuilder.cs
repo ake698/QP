@@ -12,10 +12,10 @@ namespace QP.Entity.ModelBuilders
 
             b.HasData(
                 new SeriesType
-                { Id = 1, Name = "电影" },
-                new SeriesType { Id = 2, Name = "电视剧" },
-                new SeriesType { Id = 3, Name = "综艺" },
-                new SeriesType { Id = 4, Name = "动画" }
+                { Id = 1, Name = "电影" ,Icon = "icon_1.png"},
+                new SeriesType { Id = 2, Name = "电视剧", Icon = "icon_2.png" },
+                new SeriesType { Id = 3, Name = "综艺", Icon = "icon_3.png" },
+                new SeriesType { Id = 4, Name = "动画", Icon = "icon_4.png" }
             );
         }
     }

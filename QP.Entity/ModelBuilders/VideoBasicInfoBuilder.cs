@@ -11,6 +11,12 @@ namespace QP.Entity.ModelBuilders
 
             b.BuilderFullEntity();
 
+            b.Property(p => p.IsHot)
+                .HasDefaultValue(false);
+
+            b.Property(p => p.Count)
+                .HasDefaultValue(0);
+
             b.HasOne(p => p.CategoryType)
                 .WithMany()
                 .IsRequired()

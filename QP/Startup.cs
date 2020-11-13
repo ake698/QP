@@ -71,7 +71,7 @@ namespace QP
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=QP}/{action=Play}/{id?}");
+                    pattern: "{controller=QP}/{action=Index}/{id?}");
             });
         }
     }

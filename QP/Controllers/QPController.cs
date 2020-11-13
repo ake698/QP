@@ -19,27 +19,40 @@ namespace QP.Controllers
         private readonly ILogger<QPController> _logger;
         private readonly ICategoryService _categoryService;
         private readonly IBasicInfoService _basicInfoService;
+        private readonly ISeriesTypeService _seriesTypeService;
 
-        public QPController(ILogger<QPController> logger, ICategoryService categoryService, IBasicInfoService basicInfoService)
+        public QPController(ILogger<QPController> logger, ICategoryService categoryService, IBasicInfoService basicInfoService, ISeriesTypeService seriesTypeService)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _categoryService = categoryService ?? throw new ArgumentNullException(nameof(categoryService));
             _basicInfoService = basicInfoService ?? throw new ArgumentNullException(nameof(basicInfoService));
+            _seriesTypeService = seriesTypeService ?? throw new ArgumentNullException(nameof(seriesTypeService));
         }
 
-        [Route("/index")]
+        [Route("/")]
         public async Task<IActionResult> Index()
         {
             var recents = await _basicInfoService.GetListOrderBy(orderPredicate:x => x.LastModificationTime, size: 19);
-            ViewBag.recents = recents.Take(6);
-            ViewBag.recentsSim = recents.Skip(6);
+            ViewBag.recents = recents.Take(6).ToList();
+            ViewBag.recentsSim = recents.Skip(6).ToList();
 
-            for (int i = 1; i <= (int)SeriesTypeEnum.VARIETY; i++)
+            var categoryDtos = await _categoryService.GetListAsync();
+            var recommends = new List<IndexTypeViewDto>();
+
+            var serieses = await _seriesTypeService.GetListAsync();
+            foreach (var series in serieses)
             {
-
+                var recommend = await _basicInfoService.GetListOrderBy(wherePredicate:x => x.SeriesTypeId == series.Id, orderPredicate: x => x.LastModificationTime, size: 4);
+                var recommendTop = await _basicInfoService.GetListOrderBy(wherePredicate: x => x.SeriesTypeId == series.Id, orderPredicate: x => x.Count, size: 10);
+                recommends.Add(new IndexTypeViewDto
+                {
+                    Recommends = recommend,
+                    RecommendTops = recommendTop,
+                    CategoryTypes = categoryDtos.Where(x => x.SeriesTypeId == series.Id).ToList(),
+                    SeriesType = series
+                });
             }
-            var categoryDtos = await _categoryService.GetListAsync(x => x.SeriesTypeId == 1);
-            ViewBag.category = categoryDtos;
+            ViewBag.recommends = recommends;
             return View();
         }
 
