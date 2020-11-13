@@ -21,9 +21,9 @@
                         {
                             <li class="col-md-6 col-sm-4 col-xs-3">
                                 <div class="stui-vodlist__box">
-                                    <a class="stui-vodlist__thumb lazyload" href="https://www.fff21.com/vod/49121.html" title="@recent.Name" style="background-image: url(&quot;@recent.Image &quot;);"><span class="play hidden-xs"></span><span class="pic-text text-right">@recent.Remark</span></a>
+                                    <a class="stui-vodlist__thumb lazyload" href="/detail/@recent.Id" title="@recent.Name" style="background-image: url(&quot;@recent.Image &quot;);"><span class="play hidden-xs"></span><span class="pic-text text-right">@recent.Remark</span></a>
                                     <div class="stui-vodlist__detail">
-                                        <h4 class="title text-overflow"><a href="https://www.fff21.com/vod/49121.html" title="@recent.Name">@recent.Name</a></h4>
+                                        <h4 class="title text-overflow"><a href="/detail/@recent.Id" title="@recent.Name">@recent.Name</a></h4>
                                         <p class="text text-overflow text-muted hidden-xs">@recent.Actor</p>
                                     </div>
                                 </div>
@@ -69,18 +69,16 @@
                             <div class="hidden-sm hidden-xs clearfix">
                                 <!--top 1 图片-->
                                 <ul class="col-xs-wide-45 stui-vodlist col-pd clearfix">
-                                    <li><a class="stui-vodlist__thumb lazyload" href="https://www.fff21.com/vod/41820.html" title="说电影《年轻人》" data-original="https://tu.tianzuida.com/pic/upload/vod/2020-11-05/202011051604579732.jpg" style="background-image: url(&quot;/upload/vod/20200424-1/e3ae4f14e03c114de3038211800302ba.jpg&quot;);"><span class="play active hidden-xs"></span><span class="pic-tag pic-tag-h">Top1</span></a></li>
+                                    <li><a class="stui-vodlist__thumb lazyload" href="https://www.fff21.com/vod/41820.html" title="@recommend.RecommendTops[0].Name" style="background-image: url(&quot;@recommend.RecommendTops[0].Image &quot;);"><span class="play active hidden-xs"></span><span class="pic-tag pic-tag-h">Top1</span></a></li>
                                 </ul>
                                 <!--电影排行榜-->
                                 <ul class="col-xs-wide-55 stui-vodlist__rank col-pd clearfix">
                                     @{
-                                        int index = 1;
                                         string[] classes = new string[] { "badge-first", "badge-second", "badge-third", "", "", "", "", "", "", "" };
                                     }
-                                    @foreach (var top in recommend.RecommendTops)
+                                    @for(int index=1;index<recommend.RecommendTops.Count;index++)
                                     {
-                                        @*@index = index + 1;*@
-                                        <li><a href="https://www.fff21.com/vod/41820.html" title="@top.Name"><span class="text-muted pull-right hidden-md">@top.Remark</span><span class="badge @classes[index]">@index</span>@top.Name</a></li>
+                                        <li><a href="https://www.fff21.com/vod/41820.html" title="@recommend.RecommendTops[index-1].Name"><div class="text text-overflow hidden-xs;width:60%" style="word-break: keep-all;white-space:nowrap;"><span class="badge @classes[index-1]">@index</span>@recommend.RecommendTops[index-1].Name</div></a></li>
                                     }
                                 </ul>
                             </div>

@@ -20,13 +20,15 @@ namespace QP.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IBasicInfoService _basicInfoService;
         private readonly ISeriesTypeService _seriesTypeService;
+        private readonly IPlayInfoService _playInfoService;
 
-        public QPController(ILogger<QPController> logger, ICategoryService categoryService, IBasicInfoService basicInfoService, ISeriesTypeService seriesTypeService)
+        public QPController(ILogger<QPController> logger, ICategoryService categoryService, IBasicInfoService basicInfoService, ISeriesTypeService seriesTypeService, IPlayInfoService playInfoService)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _categoryService = categoryService ?? throw new ArgumentNullException(nameof(categoryService));
             _basicInfoService = basicInfoService ?? throw new ArgumentNullException(nameof(basicInfoService));
             _seriesTypeService = seriesTypeService ?? throw new ArgumentNullException(nameof(seriesTypeService));
+            _playInfoService = playInfoService ?? throw new ArgumentNullException(nameof(playInfoService));
         }
 
         [Route("/")]
@@ -37,9 +39,9 @@ namespace QP.Controllers
             ViewBag.recentsSim = recents.Skip(6).ToList();
 
             var categoryDtos = await _categoryService.GetListAsync();
-            var recommends = new List<IndexTypeViewDto>();
-
             var serieses = await _seriesTypeService.GetListAsync();
+
+            var recommends = new List<IndexTypeViewDto>();
             foreach (var series in serieses)
             {
                 var recommend = await _basicInfoService.GetListOrderBy(wherePredicate:x => x.SeriesTypeId == series.Id, orderPredicate: x => x.LastModificationTime, size: 4);
@@ -56,9 +58,15 @@ namespace QP.Controllers
             return View();
         }
 
-        [Route("detail")]
-        public IActionResult Detail()
+
+        [Route("/detail/{id}")]
+        public async Task<IActionResult> Detail(int id)
         {
+            var basicInfo = await _basicInfoService.GetAsync(id);
+            var playInfo = await _playInfoService.GetListAsync(x => x.BasicInfoId == id);
+
+            ViewBag.video = basicInfo;
+            ViewBag.play = playInfo;
             return View();
         }
 
