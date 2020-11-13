@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="BasicInfos\" />
-    <Folder Include="PlayInfos\" />
   </ItemGroup>
 
 </Project>

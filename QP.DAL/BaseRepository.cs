@@ -96,25 +96,20 @@ namespace QP.DAL
 
         public IQueryable<T> GetAllByPageAsync(int pageSize = 10, int pageIndex = 0)
         {
-            return GetAllAsync().Skip(pageSize * pageIndex).Take(pageSize);
+            return PageAsync(GetAllAsync(), pageSize, pageIndex);
         }
-
-        public IQueryable<T> GetAllByPageOrderAsync(int pageSize = 10, int pageIndex = 0, bool asc = true)
+        public IQueryable<T> PageAsync(IQueryable<T> datas, int pageSize = 10, int pageIndex = 0)
         {
-            return GetAllOrderAsync(asc).Skip(pageSize * pageIndex).Take(pageSize);
+            return datas.Skip(pageSize * pageIndex).Take(pageSize);
         }
 
         public IQueryable<T> GetByPredicate(Expression<Func<T, bool>> predicate)
         {
-            return GetAllAsync().Where(predicate);
+            if (predicate != null)
+                return GetAllAsync().Where(predicate);
+            return GetAllAsync();
         }
-
-        public IQueryable<T> GetAllOrderAsync(bool asc = true)
-        {
-            var datas = GetAllAsync();
-            datas = asc ? datas.OrderBy(m => m.Id) : datas.OrderByDescending(m => m.Id);
-            return datas;
-        }
+        
         #endregion
 
     }

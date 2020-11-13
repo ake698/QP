@@ -14,4 +14,8 @@
     <ProjectReference Include="..\QP.IDAL\QP.IDAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\Mappers\" />
+  </ItemGroup>
+
 </Project>
