@@ -59,18 +59,18 @@ namespace QP.Controllers
         }
 
 
-        [Route("/detail/{id}")]
+        [Route("/detail/{id}.html")]
         public async Task<IActionResult> Detail(int id)
         {
             var basicInfo = await _basicInfoService.GetAsync(id);
-            var playInfo = await _playInfoService.GetListAsync(x => x.BasicInfoId == id);
+            var playInfo = await _playInfoService.GetPlayInfos(id);
 
             ViewBag.video = basicInfo;
             ViewBag.play = playInfo;
             return View();
         }
 
-        [Route("play")]
+        [Route("/play/{id}.html")]
         public IActionResult Play()
         {
             return View();

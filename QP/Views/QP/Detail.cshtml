@@ -36,41 +36,30 @@
                 </div>
             </div>
             <!--播放源 需要遍历 此处最好能做成tab形式-->
-            <div class="stui-pannel stui-pannel-bg clearfix">
-                <div class="stui-pannel-box b playlist mb">
-                    <div class="stui-pannel_hd">
-                        <div class="stui-pannel__head bottom-line active clearfix">
-                            <span class="nore text-muted pull-right">来源：OK资源</span>
-                            <h3 class="title">OK资源</h3>
+            @foreach (var play in ViewBag.play)
+            {
+                <div class="stui-pannel stui-pannel-bg clearfix">
+                    <div class="stui-pannel-box b playlist mb">
+                        <div class="stui-pannel_hd">
+                            <div class="stui-pannel__head bottom-line active clearfix">
+                                <span class="nore text-muted pull-right">来源：@play.ResourceName</span>
+                                <h3 class="title">@play.ResourceName</h3>
+                            </div>
+                        </div>
+                        <div class="stui-pannel_bd col-pd clearfix">
+                            <ul class="stui-content__playlist clearfix">
+                                @foreach (var address in play.PlayAddresses)
+                                {
+                                    <li><a href="https://www.fff21.com/bo/34219-1-1.html">@address</a></li>
+                                }
+                            </ul>
                         </div>
                     </div>
-                    <div class="stui-pannel_bd col-pd clearfix">
-                        <ul class="stui-content__playlist clearfix">
-                            <li><a href="https://www.fff21.com/bo/34219-1-1.html">第01集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-2.html">第02集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-3.html">第03集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-4.html">第04集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-5.html">第05集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-6.html">第06集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-7.html">第07集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-8.html">第08集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-9.html">第09集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-10.html">第10集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-11.html">第11集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-12.html">第12集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-13.html">第13集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-14.html">第14集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-15.html">第15集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-16.html">第16集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-17.html">第17集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-18.html">第18集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-19.html">第13集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-20.html">第14集</a></li>
-                            <li><a href="https://www.fff21.com/bo/34219-1-21.html">第15集</a></li>
-                        </ul>
-                    </div>
                 </div>
-            </div>
+            }
+
+
+
             <div class="stui-pannel stui-pannel-bg clearfix">
                 <div class="stui-pannel-box">
                     <div class="stui-pannel_hd">
@@ -81,7 +70,7 @@
                     <div class="stui-pannel_bd">
                         <div class="detail col-pd">
                             <span class="detail-sketch">胡八一、王胖子和大金牙被村民编造的绣花鞋的故事所骗，前往陕西古蓝县。水路艰险，胡八一挺身让众人脱险。在招待所幸遇陈瞎子提醒，得以逃脱村民圈套。三人无意掉入“龙岭迷窟”遭蝙蝠袭击，发现身上长出红斑，决定</span>
-                            <span class="detail-content" style="display: none;">胡八一、王胖子和大金牙被村民编造的绣花鞋的故事所骗，前往陕西古蓝县。水路艰险，胡八一挺身让众人脱险。在招待所幸遇陈瞎子提醒，得以逃脱村民圈套。三人无意掉入“龙岭迷窟”遭蝙蝠袭击，发现身上长出红斑，决定在王大爷家修整，遇到同样来找红斑根源的shirley杨，并听闻了鹧鸪哨和了尘大师寻找雮尘珠的英勇故事。几人决心寻找雮尘珠，陈瞎子告诉他们“内藏眢”就在此地。村民故技重施，威胁胡八一等人寻找钱财，两拨人马前往洞穴，遭到蜘蛛袭击，被困暗阁，但大家齐心协力，化险为夷，最终进入了“棋盘”机关，众人协作，找到了龙骨天书，逃出洞穴，准备前往云南继续解密“红斑”。</span>
+                            <span class="detail-content" style="display: none;">@ViewBag.Video.Describes</span>
                             <a class="detail-more" href="javascript:;">详情<i class="icon iconfont icon-moreunfold"></i></a>
                         </div>
                     </div>
