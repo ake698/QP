@@ -8,6 +8,6 @@ namespace QP.IBLL
     public interface IBasicInfoService : IBaseService<VideoBasicInfo, BasicInfoDto>
     {
         //Task<BasicInfoDto> GetListOrderByLastModificationTime(int size);
-        Task<PageResultDto<BasicInfoDto>> GetListPageAsync(VodQueryVo vo);
+        Task<PageResultDto<BasicInfoDto>> GetListPageAsync(int seriesId, VodQueryVo vo);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using QP.Bussiness;
 using QP.Entity;
 using QP.IBLL;
@@ -21,17 +22,18 @@ namespace QP.BLL
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<PageResultDto<BasicInfoDto>> GetListPageAsync(VodQueryVo vo)
+        public async Task<PageResultDto<BasicInfoDto>> GetListPageAsync(int seriesId, VodQueryVo vo)
         {
-            var datas = _repository.GetAllAsync();
+            var datas = _repository.GetAllAsync()
+                .Where(x => x.SeriesTypeId == seriesId);
             if (vo.CategoryId.HasValue)
-                datas.Where(x => x.CategoryTypeId == vo.CategoryId.Value);
+                datas = datas.Where(x => x.CategoryTypeId == vo.CategoryId.Value);
             if (!string.IsNullOrEmpty(vo.AreaName))
-                datas.Where(x => x.Area == vo.AreaName);
+                datas = datas.Where(x => x.Area == vo.AreaName);
             if (!string.IsNullOrEmpty(vo.Year))
-                datas.Where(x => x.Year == vo.Year);
-            if (string.IsNullOrEmpty(vo.Letter))
-                datas.Where(x => x.En.StartsWith(vo.Letter));
+                datas = datas.Where(x => x.Year == vo.Year);
+            if (!string.IsNullOrEmpty(vo.Letter))
+                datas = datas.Where(x => x.En.StartsWith(vo.Letter));
             return await PageAsync(datas, vo.Page);
         }
     }

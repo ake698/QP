@@ -10,16 +10,30 @@
     <div class="stui-pannel stui-pannel-bg clearfix">
         <div class="stui-pannel-box">
             <div class="stui-pannel_hd">
-                <ul class="stui-screen__list type-slide bottom-line-dot clearfix">
+                <ul class="stui-screen__list type-slide bottom-line-dot clearfix" id="category">
                     <li>
                         <span class="text-muted">按类型</span>
                     </li>
-                    <li class="active">
-                        <a href="https://www.fff21.com/show/1-----------.html">全部</a>
+                    @{ 
+                        string CategoryActive = "";
+                        string CategoryAll = "";
+                        if (ViewBag.vo.CategoryId == null)
+                            CategoryAll = "active";
+                    }
+                    <li class="@CategoryAll">
+                        <a href="?AreaName=@ViewBag.vo.AreaName&Year=@ViewBag.vo.Year&Language=@ViewBag.vo.Language&Letter=@ViewBag.vo.Letter">全部</a>
                     </li>
                     @foreach (var category in ViewBag.categories)
                     {
-                        <li>
+                        @if(category.Id == ViewBag.vo.CategoryId)
+                        {
+                            CategoryActive = "active";
+                        }
+                        else
+                        {
+                            CategoryActive = "";
+                        }
+                        <li class="@CategoryActive">
                             <a href="?CategoryId=@category.Id&AreaName=@ViewBag.vo.AreaName&Year=@ViewBag.vo.Year&Language=@ViewBag.vo.Language&Letter=@ViewBag.vo.Letter" class="text-muted">@category.Name</a>
                         </li>
                     }
@@ -27,242 +41,31 @@
                 </ul>
                 <ul class="stui-screen__list type-slide bottom-line-dot clearfix">
                     <li>
-                        <span class="text-muted">按地区</span>
-                    </li>
-                    <li class="active">
-                        <a href="https://www.fff21.com/show/dianying-----------.html">全部</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E5%A4%A7%E9%99%86----------.html">大陆</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E9%A6%99%E6%B8%AF----------.html">香港</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E5%8F%B0%E6%B9%BE----------.html">台湾</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E7%BE%8E%E5%9B%BD----------.html">美国</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E6%B3%95%E5%9B%BD----------.html">法国</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E8%8B%B1%E5%9B%BD----------.html">英国</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E6%97%A5%E6%9C%AC----------.html">日本</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E9%9F%A9%E5%9B%BD----------.html">韩国</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E5%BE%B7%E5%9B%BD----------.html">德国</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E6%B3%B0%E5%9B%BD----------.html">泰国</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E5%8D%B0%E5%BA%A6----------.html">印度</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E6%84%8F%E5%A4%A7%E5%88%A9----------.html">意大利</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E8%A5%BF%E7%8F%AD%E7%89%99----------.html">西班牙</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E5%8A%A0%E6%8B%BF%E5%A4%A7----------.html">加拿大</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-%E5%85%B6%E4%BB%96----------.html">其他</a>
-                    </li>
-                </ul>
-                <ul class="stui-screen__list type-slide bottom-line-dot clearfix">
-                    <li>
                         <span class="text-muted">按年份</span>
                     </li>
-                    <li class="active">
-                        <a href="https://www.fff21.com/show/dianying-----------.html">全部</a>
+                    @{ 
+                        string YearActive = "";
+                        string YealAll = "";
+                        if (ViewBag.vo.Year == null)
+                            YealAll = "active";
+                    }
+                    <li class="@YealAll">
+                        <a href="?CategoryId=@ViewBag.vo.CategoryId&AreaName=@ViewBag.vo.AreaName&Year=@ViewBag.vo.Year&Language=@ViewBag.vo.Language&Letter=@ViewBag.vo.Letter">全部</a>
                     </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----------2018.html">2018</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----------2017.html">2017</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----------2016.html">2016</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----------2015.html">2015</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----------2014.html">2014</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----------2013.html">2013</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----------2012.html">2012</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----------2011.html">2011</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----------2010.html">2010</a>
-                    </li>
-                </ul>
-                <ul class="stui-screen__list type-slide bottom-line-dot clearfix">
-                    <li>
-                        <span class="text-muted">按语言</span>
-                    </li>
-                    <li class="active">
-                        <a href="https://www.fff21.com/show/dianying-----------.html">全部</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying----%E5%9B%BD%E8%AF%AD-------.html">国语</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying----%E8%8B%B1%E8%AF%AD-------.html">英语</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying----%E7%B2%A4%E8%AF%AD-------.html">粤语</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying----%E9%97%BD%E5%8D%97%E8%AF%AD-------.html">闽南语</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying----%E9%9F%A9%E8%AF%AD-------.html">韩语</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying----%E6%97%A5%E8%AF%AD-------.html">日语</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying----%E6%B3%95%E8%AF%AD-------.html">法语</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying----%E5%BE%B7%E8%AF%AD-------.html">德语</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying----%E5%85%B6%E5%AE%83-------.html">其它</a>
-                    </li>
-                </ul>
-                <ul class="stui-screen__list letter-list type-slide clearfix">
-                    <li>
-                        <span class="text-muted">按字母</span>
-                    </li>
-                    <li class="active">
-                        <a href="https://www.fff21.com/show/dianying-----------.html">全部</a>
-                    </li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----A------.html">A</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----B------.html">B</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----C------.html">C</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----D------.html">D</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----E------.html">E</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----F------.html">F</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----G------.html">G</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----H------.html">H</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----I------.html">I</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----J------.html">J</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----K------.html">K</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----L------.html">L</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----M------.html">M</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----N------.html">N</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----O------.html">O</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----P------.html">P</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----Q------.html">Q</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----R------.html">R</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----S------.html">S</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----T------.html">T</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----U------.html">U</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----V------.html">V</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----W------.html">W</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----X------.html">X</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----Y------.html">Y</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----Z------.html">Z</a>
-                    </li>
-                    <li></li>
-                    <li>
-                        <a href="https://www.fff21.com/show/dianying-----0-9------.html">0-9</a>
-                    </li>
-                    <li></li>
+                    @for(int y=2010; y<=2020; y++)
+                    {
+                        @if(y.ToString() == ViewBag.vo.Year)
+                        {
+                            YearActive = "active";
+                        }
+                        else
+                        {
+                            YearActive = "";
+                        }
+                        <li class="@YearActive">
+                            <a href="?CategoryId=@ViewBag.vo.CategoryId&AreaName=@ViewBag.vo.AreaName&Year=@y&Language=@ViewBag.vo.Language&Letter=@ViewBag.vo.Letter">@y</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -273,13 +76,13 @@
                 <div class="stui-pannel__head active bottom-line clearfix">
                     <ul class="nav nav-head">
                         <li class="active">
-                            <a href="https://www.fff21.com/show/dianying--time---------.html">按时间</a>
+                            <a href="#">按时间</a>
                         </li>
                         <li>
-                            <a href="https://www.fff21.com/show/dianying--hits---------.html">按人气</a>
+                            <a href="#">按人气</a>
                         </li>
                         <li>
-                            <a href="https://www.fff21.com/show/dianying--score---------.html">按评分</a>
+                            <a href="#">按评分</a>
                         </li>
                     </ul>
                 </div>
@@ -296,7 +99,7 @@
                                 </a>
                                 <div class="stui-vodlist__detail">
                                     <h4 class="title text-overflow">
-                                        <a href="https://www.fff21.com/vod/49153.html" title="@vod.Name">@vod.Name</a>
+                                        <a href="/detail/@vod.Id" title="@vod.Name">@vod.Name</a>
                                     </h4>
                                     <p class="text text-overflow text-muted hidden-xs">@vod.Actor</p>
                                 </div>
@@ -309,33 +112,42 @@
     </div>
     <ul class="stui-page text-center clearfix">
         <li>
-            <a href="#">首页</a>
+            <a href="@ViewBag.Url&Page=1">首页</a>
         </li>
-        <li>
-            <a href="@ViewBag.Url&Page=@(ViewBag.vods.CurrentPage - 1)">上一页</a>
-        </li>
+        @if (ViewBag.vods.CurrentPage > 1)
+        {
+            <li>
+                <a href="@ViewBag.Url&Page=@(ViewBag.vods.CurrentPage - 1)">上一页</a>
+            </li>
+        }
+
         @{
-            var active = "";
+            var PageActive = "";
         }
         @foreach (var pageNum in ViewBag.vods.Pages)
         {
 
             @if (ViewBag.vods.CurrentPage == pageNum)
-            { active = "active"; }
+            { PageActive = "active"; }
             else
-            { active = ""; }
-            <li class="hidden-xs @active">
+            { PageActive = ""; }
+            <li class="hidden-xs @PageActive">
                 <a href="@ViewBag.Url&Page=@pageNum">@pageNum</a>
             </li>
         }
         <li class="active visible-xs">
             <span class="num">@ViewBag.vods.CurrentPage/@ViewBag.vods.MaxPage</span>
         </li>
-        <li>
-            <a href="@ViewBag.Url&Page=@(ViewBag.vods.CurrentPage + 1)">下一页</a>
-        </li>
+        @if (ViewBag.vods.CurrentPage < ViewBag.vods.MaxPage)
+        {
+            <li>
+                <a href="@ViewBag.Url&Page=@(ViewBag.vods.CurrentPage + 1)">下一页</a>
+            </li>
+        }
         <li>
             <a href="@ViewBag.Url&Page=@ViewBag.vods.MaxPage">尾页</a>
         </li>
     </ul>
 </div>
+
+<script src="~/js/category.js"></script>

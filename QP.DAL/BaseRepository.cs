@@ -100,6 +100,8 @@ namespace QP.DAL
         }
         public IQueryable<T> PageAsync(IQueryable<T> datas, int pageSize = 10, int pageIndex = 0)
         {
+            if (pageIndex < 0)
+                throw new ArgumentException("PageIndex should greater than -1");
             return datas.Skip(pageSize * pageIndex).Take(pageSize);
         }
 

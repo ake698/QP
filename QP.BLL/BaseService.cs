@@ -99,7 +99,7 @@ namespace QP.BLL
                 pageListSize++;
 
             if (maxPage < pageListSize)
-                return Enumerable.Range(1, pageListSize).ToArray();
+                return Enumerable.Range(1, maxPage).ToArray();
 
             int midPage = pageListSize / 2;
             

@@ -64,7 +64,7 @@ namespace QP.Controllers
         public async Task<IActionResult> Series(int id, [FromQuery]VodQueryVo vo)
         {
             var categories = await _categoryService.GetListAsync(x => x.SeriesTypeId == id);
-            var vods = await _basicInfoService.GetListPageAsync(vo);
+            var vods = await _basicInfoService.GetListPageAsync(id, vo);
             ViewBag.vo = vo;
             ViewBag.categories = categories;
             ViewBag.vods = vods;
@@ -80,7 +80,7 @@ namespace QP.Controllers
             var playInfo = await _playInfoService.GetPlayInfos(id);
 
             ViewBag.video = basicInfo;
-            //ViewBag.play = playInfo;
+            ViewBag.play = playInfo;
             return View();
         }
 
