@@ -68,7 +68,12 @@ namespace QP.BLL
             var datas = _repository.GetByPredicate(wherePredicate);
             if (orderPredicate != null)
                 datas = asc ? datas.OrderBy(orderPredicate) : datas.OrderByDescending(orderPredicate);
-            var curPageData = await _repository.PageAsync(datas, pageSize, page).ToListAsync();
+            return await PageAsync(datas, page, pageSize, pageListSize);
+        }
+
+        public async Task<PageResultDto<R>> PageAsync(IQueryable<T> datas, int page = 1, int pageSize = 12, int pageListSize = 5)
+        {
+            var curPageData = await _repository.PageAsync(datas, pageSize, page - 1).ToListAsync();
             var dataCounts = datas.Count();
             var maxPage = dataCounts / pageSize;
             if (dataCounts % pageSize != 0)
@@ -84,9 +89,10 @@ namespace QP.BLL
             };
         }
 
+
         private int[] CaculatePages(int currentPage, int maxPage, int pageListSize)
         {
-            if (currentPage > maxPage)
+            if (currentPage > maxPage || currentPage < 1)
                 currentPage = 1;
 
             if (pageListSize % 2 != 1)
