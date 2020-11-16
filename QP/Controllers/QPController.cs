@@ -10,6 +10,7 @@ using QP.Bussiness.Enums;
 using QP.Entity;
 using QP.IBLL;
 using QP.Models;
+using QP.VO;
 
 namespace QP.Controllers
 {
@@ -59,6 +60,18 @@ namespace QP.Controllers
         }
 
         //Category /series/{id}
+        [Route("/series/{id}")]
+        public async Task<IActionResult> Series(int id, [FromQuery]VodQueryVo vo)
+        {
+            var categories = await _categoryService.GetListAsync(x => x.SeriesTypeId == id);
+            var vods = await _basicInfoService.GetListPageAsync(vo);
+            ViewBag.vo = vo;
+            ViewBag.categories = categories;
+            ViewBag.vods = vods;
+            return View();
+        }
+
+
 
         [Route("/detail/{id}")]
         public async Task<IActionResult> Detail(int id)

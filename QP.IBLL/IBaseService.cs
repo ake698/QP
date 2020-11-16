@@ -1,6 +1,7 @@
 ﻿using QP.Bussiness;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -21,6 +22,8 @@ namespace QP.IBLL
         Task DeleteAsync(int id);
 
         Task<PageResultDto<R>> GetListPageAsync<TKey>(Expression<Func<T, bool>> wherePredicate = null, Expression<Func<T, TKey>> orderPredicate = null, int page = 1, int pageSize = 10, int pageListSize = 5, bool asc = false);
+
+        Task<PageResultDto<R>> PageAsync(IQueryable<T> datas, int page = 1, int pageSize = 10, int pageListSize = 5);
 
         //Task<R> UpdateAsync(U u);
     }
