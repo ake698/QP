@@ -20,15 +20,15 @@ namespace QP.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IBasicInfoService _basicInfoService;
         private readonly ISeriesTypeService _seriesTypeService;
-        private readonly IPlayInfoService _playInfoService;
+        //private readonly IPlayInfoService _playInfoService;
 
-        public QPController(ILogger<QPController> logger, ICategoryService categoryService, IBasicInfoService basicInfoService, ISeriesTypeService seriesTypeService, IPlayInfoService playInfoService)
+        public QPController(ILogger<QPController> logger, ICategoryService categoryService, IBasicInfoService basicInfoService, ISeriesTypeService seriesTypeService)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _categoryService = categoryService ?? throw new ArgumentNullException(nameof(categoryService));
             _basicInfoService = basicInfoService ?? throw new ArgumentNullException(nameof(basicInfoService));
             _seriesTypeService = seriesTypeService ?? throw new ArgumentNullException(nameof(seriesTypeService));
-            _playInfoService = playInfoService ?? throw new ArgumentNullException(nameof(playInfoService));
+            //_playInfoService = playInfoService ?? throw new ArgumentNullException(nameof(playInfoService));
         }
 
         [Route("/")]
@@ -44,12 +44,12 @@ namespace QP.Controllers
             var recommends = new List<IndexTypeViewDto>();
             foreach (var series in serieses)
             {
-                var recommend = await _basicInfoService.GetListOrderBy(wherePredicate:x => x.SeriesTypeId == series.Id, orderPredicate: x => x.LastModificationTime, size: 4);
-                var recommendTop = await _basicInfoService.GetListOrderBy(wherePredicate: x => x.SeriesTypeId == series.Id, orderPredicate: x => x.Count, size: 10);
+                var recommend = await _basicInfoService.GetListOrderBy(wherePredicate:x => x.SeriesTypeId == series.Id, orderPredicate: x => x.LastModificationTime, size: 14);
+                //var recommendTop = await _basicInfoService.GetListOrderBy(wherePredicate: x => x.SeriesTypeId == series.Id, orderPredicate: x => x.Count, size: 10);
                 recommends.Add(new IndexTypeViewDto
                 {
-                    Recommends = recommend,
-                    RecommendTops = recommendTop,
+                    Recommends = recommend.Take(4).ToList(),
+                    RecommendTops = recommend.Skip(4).ToList(),
                     CategoryTypes = categoryDtos.Where(x => x.SeriesTypeId == series.Id).ToList(),
                     SeriesType = series
                 });
@@ -58,15 +58,16 @@ namespace QP.Controllers
             return View();
         }
 
+        //Category /series/{id}
 
         [Route("/detail/{id}")]
         public async Task<IActionResult> Detail(int id)
         {
             var basicInfo = await _basicInfoService.GetAsync(id);
-            var playInfo = await _playInfoService.GetListAsync(x => x.BasicInfoId == id);
+            //var playInfo = await _playInfoService.GetListAsync(x => x.BasicInfoId == id);
 
             ViewBag.video = basicInfo;
-            ViewBag.play = playInfo;
+            //ViewBag.play = playInfo;
             return View();
         }
 

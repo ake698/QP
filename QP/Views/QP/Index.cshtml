@@ -34,7 +34,7 @@
                         <!--12个-->
                         @foreach (var recent in ViewBag.recentsSim)
                         {
-                            <li class="col-md-6 col-xs-4 padding-0"><a class="top-line-dot text-overflow" href="https://www.fff21.com/vod/48957.html" title="@recent.Name"><i class="icon iconfont icon-more pull-right text-muted"></i>@recent.Name</a></li>
+                            <li class="col-md-6 col-xs-4 padding-0"><a class="top-line-dot text-overflow" href="/detail/@recent.Id" title="@recent.Name"><i class="icon iconfont icon-more pull-right text-muted"></i>@recent.Name</a></li>
                         }
                     </ul>
                 </div>
@@ -47,13 +47,13 @@
                 <div class="stui-pannel-box clearfix">
                     <div class="stui-pannel_hd">
                         <div class="stui-pannel__head clearfix">
-                            <a class="more text-muted pull-right" href="https://www.fff21.com/list/dianying.html">更多<i class="icon iconfont icon-more"></i></a>
-                            <h3 class="title"><img src="~/images/@recommend.SeriesType.Icon" /><a href="https://www.fff21.com/show/dianying-----------.html">@recommend.SeriesType.Name</a></h3>
+                            <a class="more text-muted pull-right" href="/series/@recommend.SeriesType.Id">更多<i class="icon iconfont icon-more"></i></a>
+                            <h3 class="title"><img src="~/images/@recommend.SeriesType.Icon" /><a href="/series/@recommend.SeriesType.Id">@recommend.SeriesType.Name</a></h3>
                             <!--电影分类-->
                             <ul class="nav nav-text pull-right hidden-sm hidden-xs">
                                 @foreach (var category in recommend.CategoryTypes)
                                 {
-                                    <li><a href="https://www.fff21.com/list/dongzuopian.html" class="text-muted">@category.Name</a><span class="split-line"></span></li>
+                                    <li><a href="/series/@recommend.SeriesType.Id?category=@category.Id" class="text-muted">@category.Name</a><span class="split-line"></span></li>
                                 }
                             </ul>
                         </div>
@@ -69,16 +69,16 @@
                             <div class="hidden-sm hidden-xs clearfix">
                                 <!--top 1 图片-->
                                 <ul class="col-xs-wide-45 stui-vodlist col-pd clearfix">
-                                    <li><a class="stui-vodlist__thumb lazyload" href="https://www.fff21.com/vod/41820.html" title="@recommend.RecommendTops[0].Name" style="background-image: url(&quot;@recommend.RecommendTops[0].Image &quot;);"><span class="play active hidden-xs"></span><span class="pic-tag pic-tag-h">Top1</span></a></li>
+                                    <li><a class="stui-vodlist__thumb lazyload" href="/detail/@recommend.RecommendTops[0].Id" title="@recommend.RecommendTops[0].Name" style="background-image: url(&quot;@recommend.RecommendTops[0].Image &quot;);"><span class="play active hidden-xs"></span><span class="pic-tag pic-tag-h">Top1</span></a></li>
                                 </ul>
                                 <!--电影排行榜-->
                                 <ul class="col-xs-wide-55 stui-vodlist__rank col-pd clearfix">
                                     @{
                                         string[] classes = new string[] { "badge-first", "badge-second", "badge-third", "", "", "", "", "", "", "" };
                                     }
-                                    @for(int index=1;index<recommend.RecommendTops.Count;index++)
+                                    @for(int index=1;index <= recommend.RecommendTops.Count;index++)
                                     {
-                                        <li><a href="https://www.fff21.com/vod/41820.html" title="@recommend.RecommendTops[index-1].Name"><div class="text text-overflow hidden-xs;width:60%" style="word-break: keep-all;white-space:nowrap;"><span class="badge @classes[index-1]">@index</span>@recommend.RecommendTops[index-1].Name</div></a></li>
+                                        <li><a href="/detail/@recommend.RecommendTops[index-1].Id" title="@recommend.RecommendTops[index-1].Name"><div class="text text-overflow hidden-xs;width:60%" style="word-break: keep-all;white-space:nowrap;"><span class="badge @classes[index-1]">@index</span>@recommend.RecommendTops[index-1].Name</div></a></li>
                                     }
                                 </ul>
                             </div>
@@ -90,9 +90,9 @@
                                     {
                                     <li class="col-md-4 col-sm-4 col-xs-3">
                                         <div class="stui-vodlist__box">
-                                            <a class="stui-vodlist__thumb lazyload" href="https://www.fff21.com/vod/49120.html" title="@video.Name" style="background-image: url(&quot;@video.Image &quot;);"><span class="play hidden-xs"></span><span class="pic-text text-right">@video.Name</span></a>
+                                            <a class="stui-vodlist__thumb lazyload" href="/detail/@video.Id" title="@video.Name" style="background-image: url(&quot;@video.Image &quot;);"><span class="play hidden-xs"></span><span class="pic-text text-right">@video.Name</span></a>
                                             <div class="stui-vodlist__detail">
-                                                <h4 class="title text-overflow"><a href="https://www.fff21.com/vod/49120.html" title="@video.Name">@video.Name</a></h4>
+                                                <h4 class="title text-overflow"><a href="/detail/@video.Id" title="@video.Name">@video.Name</a></h4>
                                                 <p class="text text-overflow text-muted hidden-xs">@video.Actor</p>
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                     <div class="stui-pannel_ft top-line visible-xs clearfix">
-                        <a class="text-muted" href="https://www.fff21.com/show/dianying-----------.html">查看更多电影<i class="icon iconfont icon-more"></i></a>
+                        <a class="text-muted" href="/series/@recommend.SeriesType.Id">查看更多<span>@recommend.SeriesType.Name</span><i class="icon iconfont icon-more"></i></a>
                     </div>
                 </div>
             </div>
