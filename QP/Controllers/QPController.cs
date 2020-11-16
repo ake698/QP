@@ -7,10 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QP.Bussiness;
 using QP.Bussiness.Enums;
-using QP.Entity;
 using QP.IBLL;
 using QP.Models;
-using QP.VO;
+using QP.Vo;
 
 namespace QP.Controllers
 {
@@ -84,9 +83,24 @@ namespace QP.Controllers
             return View();
         }
 
-        [Route("/play/{id}.html")]
-        public IActionResult Play()
+        [Route("/play/{id}")]
+        public async Task<IActionResult> Play(int id, VodPlayQueryVo vo)
         {
+            var basicInfo = await _basicInfoService.GetAsync(id);
+            var playInfo = await _playInfoService.GetPlayInfos(id);
+            var currentVod = playInfo
+                .Where(x => x.ResourceId == vo.ResourceId)
+                .FirstOrDefault();
+            var currentAddress = "";
+            if(currentVod != null)
+            {
+                currentAddress = currentVod.PlayAddresses[vo.Number].Split("$")[1];
+            }
+            ViewBag.video = basicInfo;
+            ViewBag.play = playInfo;
+            ViewBag.currentAddress = currentAddress;
+            ViewBag.currentMax = currentVod.PlayAddresses.Length;
+            ViewBag.vo = vo;
             return View();
         }
 

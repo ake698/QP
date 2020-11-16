@@ -4,7 +4,7 @@ using QP.Bussiness;
 using QP.Entity;
 using QP.IBLL;
 using QP.IDAL;
-using QP.VO;
+using QP.Vo;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

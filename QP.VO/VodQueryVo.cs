@@ -1,4 +1,4 @@
-﻿namespace QP.VO
+﻿namespace QP.Vo
 {
     public class VodQueryVo
     {

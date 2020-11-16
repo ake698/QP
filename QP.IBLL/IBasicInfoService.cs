@@ -1,6 +1,6 @@
 ﻿using QP.Bussiness;
 using QP.Entity;
-using QP.VO;
+using QP.Vo;
 using System.Threading.Tasks;
 
 namespace QP.IBLL

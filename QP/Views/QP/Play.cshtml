@@ -2,6 +2,17 @@
     ViewData["Title"] = "XX电影";
     ViewData["KeyWords"] = "千频影视,手机影院,最新电影";
     ViewData["Description"] = "千频影视是最新电影和热播电视剧免费在线观看的手机影院，这里为影迷提供全网最新最全无广告热门电影，最新热门美剧、韩剧、日剧等剧集在线观看！";
+    
+    string pre = $"?number={ViewBag.vo.Number - 1}&resourceid={ViewBag.vo.ResourceId}";
+    string next = $"?number={ViewBag.vo.Number + 1}&resourceid={ViewBag.vo.ResourceId}";
+    if(ViewBag.vo.Number >= ViewBag.currentMax)
+    {
+        next = "";
+    }
+    if(ViewBag.vo.Number == 1)
+    {
+        pre = "";
+    }
 }
 <div class="row">
     <div class="col-lg-wide-75 col-xs-1 padding-0">
@@ -11,7 +22,7 @@
                     <div class="stui-player col-pd">
                         <div class="stui-player__video clearfix" style="height: 471.094px;">
                             <script type="text/javascript">
-                                var player_data = { "flag": "play", "encrypt": 0, "trysee": 0, "points": 0, "link": "\/bo\/43441-1-1.html", "link_next": "\/bo\/43441-2-2.html", "link_pre": "", "url": "https:\/\/youku.cdn4-okzy.com\/share\/d9437926cc8d785a7bdb8578fd85d8e3", "url_next":"http://youku.cdn7-okzy.com/share/954c42feaba402a134e4d89ae31cc766","from":"kuyun","server":"no","note":""}
+                                var player_data = { "flag": "play", "encrypt": 0, "trysee": 0, "points": 0, "link": "/", "link_next": "@next", "link_pre": "@pre", "url": "@ViewBag.currentAddress", "url_next": "http://youku.cdn7-okzy.com/share/954c42feaba402a134e4d89ae31cc766", "from": "kuyun", "server": "no", "note": "" }
                             </script>
                             <script type="text/javascript" src="~/js/playerconfig.js"></script>
                             <script type="text/javascript" src="~/js/player.js"></script>
@@ -49,8 +60,8 @@
                                 <li><a href="javascript:void(0);" class="mac_ulog btn btn-default" data-type="2" data-mid="1" data-id="43441">收藏<i class="icon iconfont icon-favorite hidden-xs"></i></a></li>
                                 <li><a href="javascript:;" class="btn btn-default" onclick="MAC.Gbook.Report('编号【43441】名称【传闻中的陈芊芊】不能观看请检查修复，页面地址' + location.href)">报错<i class="icon iconfont icon-close hidden-xs"></i></a></li>
                                 <li><a class="btn btn-default copylink" href="javascript:;">分享<i class="icon iconfont icon-share hidden-xs"></i></a></li>
-                                <li><a class="btn btn-default" href="https://www.fff21.com/"><i class="icon iconfont icon-back hidden-xs"></i>上一集</a></li>
-                                <li><a class="btn btn-default" href="https://www.fff21.com/bo/43441-2-2.html">下一集<i class="icon iconfont icon-more hidden-xs"></i></a></li>
+                                <li><a class="btn btn-default" href="@pre"><i class="icon iconfont icon-back hidden-xs"></i>上一集</a></li>
+                                <li><a class="btn btn-default" href="@next">下一集<i class="icon iconfont icon-more hidden-xs"></i></a></li>
                             </ul>
                             <h1 class="title">传闻中的陈芊芊</h1>
                             <p class="data margin-0"><span class="text-muted">类型：</span>国产<span class="split-line"></span><span class="text-muted">地区：</span>大陆<span class="split-line"></span><span class="text-muted">年份：</span>2020</p>
@@ -62,72 +73,27 @@
         <div class="visible-xs" style=" padding:0 20px 10px;">
             <a class="open-share btn btn-block btn-lg btn-primary" href="javascript:;"><i class="icon iconfont icon-share"></i>分享给朋友观看</a>
         </div>
-        <div class="stui-pannel stui-pannel-bg clearfix">
-            <div class="stui-pannel-box b playlist mb">
-                <div class="stui-pannel_hd">
-                    <div class="stui-pannel__head bottom-line active clearfix">
-                        <span class="nore text-muted pull-right">来源：OK资源</span>
-                        <h3 class="title">OK资源</h3>
+        @foreach (var play in ViewBag.play)
+        {
+            <div class="stui-pannel stui-pannel-bg clearfix">
+                <div class="stui-pannel-box b playlist mb">
+                    <div class="stui-pannel_hd">
+                        <div class="stui-pannel__head bottom-line active clearfix">
+                            <span class="nore text-muted pull-right">来源：@play.ResourceName</span>
+                            <h3 class="title">@play.ResourceName</h3>
+                        </div>
+                    </div>
+                    <div class="stui-pannel_bd col-pd clearfix">
+                        <ul class="stui-content__playlist clearfix">
+                            @foreach (var address in play.PlayAddresses)
+                                {
+                                    <li><a href="https://www.fff21.com/bo/34219-1-1.html">@address</a></li>
+                                }
+                        </ul>
                     </div>
                 </div>
-                <div class="stui-pannel_bd col-pd clearfix">
-                    <ul class="stui-content__playlist clearfix">
-                        <li class="active"><a href="https://www.fff21.com/bo/43441-2-1.html">第01集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-2.html">第02集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-3.html">第03集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-4.html">第04集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-5.html">第05集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-6.html">第06集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-7.html">第07集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-8.html">第08集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-9.html">第09集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-10.html">第10集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-11.html">第11集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-12.html">第12集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-13.html">第13集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-2-14.html">第14集</a></li>
-                    </ul>
-                </div>
             </div>
-        </div>
-        <div class="stui-pannel stui-pannel-bg clearfix">
-            <div class="stui-pannel-box b playlist mb">
-                <div class="stui-pannel_hd">
-                    <div class="stui-pannel__head bottom-line active clearfix">
-                        <span class="nore text-muted pull-right">在线播放,无需安装播放器</span>
-                        <h3 class="title">最大云播</h3>
-                    </div>
-                </div>
-                <div class="stui-pannel_bd col-pd clearfix">
-                    <ul class="stui-content__playlist clearfix">
-                        <li><a href="https://www.fff21.com/bo/43441-1-1.html">第01集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-2.html">第02集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-3.html">第03集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-4.html">第04集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-5.html">第05集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-6.html">第06集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-7.html">第07集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-8.html">第08集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-9.html">第09集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-10.html">第10集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-11.html">第11集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-12.html">第12集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-13.html">第13集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-14.html">第14集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-15.html">第15集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-16.html">第16集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-17.html">第17集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-18.html">第18集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-19.html">第20集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-20.html">第21集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-21.html">第22集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-22.html">第23集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-23.html">第19集</a></li>
-                        <li><a href="https://www.fff21.com/bo/43441-1-24.html">第24集</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        }
         <div class="stui-pannel stui-pannel-bg clearfix">
             <div class="stui-pannel-box">
                 <div class="stui-pannel_hd">
