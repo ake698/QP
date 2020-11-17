@@ -7,6 +7,6 @@ namespace QP.IBLL
 {
     public interface IPlayInfoService : IBaseService<VideoPlayInfo, PlayInfoDto>
     {
-        Task<List<PlayInfoWithResourceDto>> GetPlayInfos(int basicInfoId);
+        Task<List<PlayInfoDto>> GetPlayInfos(int basicInfoId);
     }
 }

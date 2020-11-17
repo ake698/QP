@@ -23,12 +23,12 @@ namespace QP.BLL
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
-        public async Task<List<PlayInfoWithResourceDto>> GetPlayInfos(int basicInfoId)
+        public async Task<List<PlayInfoDto>> GetPlayInfos(int basicInfoId)
         {
             var result = await _repository.GetAllAsync()
                 .Where(x => x.BasicInfoId == basicInfoId)
                 .Include(x => x.Resource).ToListAsync();
-            return _mapper.Map<List<PlayInfoWithResourceDto>>(result);
+            return _mapper.Map<List<PlayInfoDto>>(result);
         }
     }
 }

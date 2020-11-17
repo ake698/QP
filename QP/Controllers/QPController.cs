@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -34,7 +35,7 @@ namespace QP.Controllers
         [Route("/")]
         public async Task<IActionResult> Index()
         {
-            var recents = await _basicInfoService.GetListOrderBy(orderPredicate:x => x.LastModificationTime, size: 19);
+            var recents = await _basicInfoService.GetListOrderByAsync(orderPredicate:x => x.LastModificationTime, size: 18);
             ViewBag.recents = recents.Take(6).ToList();
             ViewBag.recentsSim = recents.Skip(6).ToList();
 
@@ -44,12 +45,12 @@ namespace QP.Controllers
             var recommends = new List<IndexTypeViewDto>();
             foreach (var series in serieses)
             {
-                var recommend = await _basicInfoService.GetListOrderBy(wherePredicate:x => x.SeriesTypeId == series.Id, orderPredicate: x => x.LastModificationTime, size: 14);
-                var recommendTop = await _basicInfoService.GetListOrderBy(wherePredicate: x => x.SeriesTypeId == series.Id, orderPredicate: x => x.Count, size: 10);
+                var recommend = await _basicInfoService.GetListTopsAsync(series.Id, 14);
+                //var recommendTop = await _basicInfoService.GetListOrderBy(wherePredicate: x => x.SeriesTypeId == series.Id, orderPredicate: x => x.Count, size: 10);
                 recommends.Add(new IndexTypeViewDto
                 {
-                    Recommends = recommend.Take(4).ToList(),
-                    RecommendTops = recommend.Skip(4).ToList(),
+                    Recommends = recommend.Skip(10).Take(4).ToList(),
+                    RecommendTops = recommend.Take(10).ToList(),
                     CategoryTypes = categoryDtos.Where(x => x.SeriesTypeId == series.Id).ToList(),
                     SeriesType = series
                 });
@@ -78,8 +79,14 @@ namespace QP.Controllers
             var basicInfo = await _basicInfoService.GetAsync(id);
             var playInfo = await _playInfoService.GetPlayInfos(id);
 
+            // 推荐
+            var recommends = await _basicInfoService.GetListRecommendsAsync(id, basicInfo.Dierctor, basicInfo.Actor, basicInfo.En);
+            // 右侧推荐最热
+            var tops = await _basicInfoService.GetListTopsAsync(id, basicInfo.SeriesTypeId);
             ViewBag.video = basicInfo;
             ViewBag.play = playInfo;
+            ViewBag.tops = tops;
+            ViewBag.recommends = recommends;
             return View();
         }
 
@@ -91,10 +98,10 @@ namespace QP.Controllers
             var currentVod = playInfo
                 .Where(x => x.ResourceId == vo.ResourceId)
                 .FirstOrDefault();
-            var currentAddress = "";
+            var currentAddress = "#";
             if(currentVod != null)
             {
-                currentAddress = currentVod.PlayAddresses[vo.Number].Split("$")[1];
+                currentAddress = currentVod.PlayAddresses[vo.Number - 1].Split("$")[1];
             }
             ViewBag.video = basicInfo;
             ViewBag.play = playInfo;
@@ -117,8 +124,8 @@ namespace QP.Controllers
         [HttpGet("/test2")]
         public async Task<PageResultDto<BasicInfoDto>> Test2()
         {
-            var recents = await _basicInfoService.GetListOrderBy(null, x => x.LastModificationTime, false, 7);
-            var movices = await _basicInfoService.GetListOrderBy(x => x.SeriesTypeId == (int)SeriesTypeEnum.Movie, x => x.LastModificationTime, false, 6);
+            var recents = await _basicInfoService.GetListOrderByAsync(null, x => x.LastModificationTime, false, 7);
+            var movices = await _basicInfoService.GetListOrderByAsync(x => x.SeriesTypeId == (int)SeriesTypeEnum.Movie, x => x.LastModificationTime, false, 6);
             var pageDto = await _basicInfoService.GetListPageAsync(orderPredicate:x => x.LastModificationTime);
             return pageDto;
         }

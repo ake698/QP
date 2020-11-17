@@ -15,7 +15,7 @@ namespace QP.IBLL
 
         Task<List<R>> GetListAsync(Expression<Func<T, bool>> predicate);
 
-        Task<List<R>> GetListOrderBy<TKEY>(Expression<Func<T, bool>> wherePredicate = null, Expression<Func<T, TKEY>> orderPredicate = null, bool asc = false, int size = -1);
+        Task<List<R>> GetListOrderByAsync<TKEY>(Expression<Func<T, bool>> wherePredicate = null, Expression<Func<T, TKEY>> orderPredicate = null, bool asc = false, int size = -1);
 
         Task SoftDeleteAsync(int id);
 

@@ -54,6 +54,7 @@ a:focus,a:hover,a:active{ text-decoration:none;}
 .text-left{ text-align: left;}
 .text-right{ text-align: right;}
 .text-overflow{ width:100%; overflow:hidden; text-overflow:ellipsis; -o-text-overflow:ellipsis; white-space:nowrap;}
+.top-text{font-size:1%;}
 
 /* img */
 img{border: 0; vertical-align:middle}
@@ -218,8 +219,9 @@ textarea.form-control{ height: auto;}
 /* play-list */
 .stui-content__playlist{ position: relative;}
 .stui-content__playlist.overflow{ max-height: 300px; overflow-y: scroll;}
-.stui-content__playlist li{float:left; margin-bottom:10px; margin-right:10px}
-.stui-content__playlist li a{display:inline-block; padding:5px 20px;border-radius:5px}
+.stui-content__playlist li{float:left; margin-bottom:10px; margin-right:10px;width:6%;}
+.stui-content__playlist li a{display:inline-block;padding:5px;border-radius:5px;width:100%;}
+.stui-content__playlist li a span{display:inline-block; text-align:center;width:100%;}
 .stui-content__playlist.full li{ float: none; width: 100%; margin-right: 0;}
 .stui-content__playlist.column3 li{ width: 33.3333333%; padding: 0 5px; margin-right: 0;}
 .stui-content__playlist.column6 li{ width: 16.6666667%; padding: 0 5px; margin-right: 0;}

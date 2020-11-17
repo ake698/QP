@@ -13,7 +13,7 @@
         public string Dierctor { get; set; }
         public string Actor { get; set; }
         public string Remark { get; set; }
-        public string Country { get; set; }
+        public string AreaName { get; set; }
         public string Language { get; set; }
         public string Year { get; set; }
         public int Count { get; set; }

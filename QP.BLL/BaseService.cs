@@ -48,7 +48,7 @@ namespace QP.BLL
             return _mapper.Map<List<R>>(entities);
         }
 
-        public async Task<List<R>> GetListOrderBy<Tkey>(Expression<Func<T, bool>> wherePredicate = null, Expression<Func<T, Tkey>> orderPredicate = null, bool asc = false, int size = -1)
+        public async Task<List<R>> GetListOrderByAsync<Tkey>(Expression<Func<T, bool>> wherePredicate = null, Expression<Func<T, Tkey>> orderPredicate = null, bool asc = false, int size = -1)
         {
             var entities = _repository.GetByPredicate(wherePredicate);
             if(orderPredicate != null)

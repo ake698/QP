@@ -22,10 +22,12 @@
                                     </div>
                                     <span class="branch">2.0</span>
                                 </div>
-                                <p class="data hidden-xs"><span class="text-muted">类型：</span><a href="https://www.fff21.com/search/----%E5%9B%BD%E4%BA%A7---------.html" target="_blank">@ViewBag.Video.CategoryTypeNames</a>&nbsp;<span class="split-line"></span><span class="text-muted">地区：</span><a href="https://www.fff21.com/search/--%E5%A4%A7%E9%99%86-----------.html" target="_blank">@ViewBag.Video.Country</a>&nbsp;<span class="split-line"></span><span class="text-muted">年份：</span><a href="https://www.fff21.com/search/-------------2020.html" target="_blank">@ViewBag.Video.Year</a>&nbsp;<span class="split-line"></span><span class="text-muted">语言：</span><a href="https://www.fff21.com/search/------%E5%9B%BD%E8%AF%AD-------.html" target="_blank">@ViewBag.Video.Language</a>&nbsp;</p>
-                                <p class="data"><span class="text-muted">主演：</span><a href="https://www.fff21.com/search/-%E6%BD%98%E7%B2%A4%E6%98%8E------------.html" target="_blank">@ViewBag.Video.Actor</a>&nbsp;</p>
-                                <p class="data"><span class="text-muted">导演：</span><a href="https://www.fff21.com/search/-----%E8%B4%B9%E6%8C%AF%E7%BF%94--------.html" target="_blank">@ViewBag.Video.Dierctor</a>&nbsp;</p>
+                                <p class="data hidden-xs"><span class="text-muted">类型：</span><a href="#">@ViewBag.Video.CategoryTypeNames</a>&nbsp;<span class="split-line"></span><span class="text-muted">地区：</span><a href="#">@ViewBag.Video.AreaName</a>&nbsp;<span class="split-line"></span><span class="text-muted">年份：</span><a href="#" target="_blank">@ViewBag.Video.Year</a>&nbsp;<span class="split-line"></span><span class="text-muted">语言：</span><a href="#">@ViewBag.Video.Language</a>&nbsp;</p>
+                                <p class="data"><span class="text-muted">主演：</span><a href="#" style="word-wrap:break-word; word-break:break-all;">@ViewBag.Video.Actor</a>&nbsp;</p>
+                                <p class="data"><span class="text-muted">导演：</span><a href="#" target="_blank">@ViewBag.Video.Dierctor</a>&nbsp;</p>
+                                <p class="data"><span class="text-muted">状态：</span><a href="#" target="_blank">@ViewBag.Video.Remark</a>&nbsp;</p>
                                 <p class="data hidden-xs"><span class="text-muted">更新：</span>@ViewBag.Video.LastModificationTime</p>
+
                                 <div class="play-btn clearfix">
                                     <div class="share bdsharebuttonbox hidden-sm hidden-xs pull-right"></div>
                                     <a href="javascript:void(0);" class="mac_ulog btn btn-default" data-type="2" data-mid="1" data-id="34219">收藏</a>
@@ -35,7 +37,6 @@
                     </div>
                 </div>
             </div>
-            <!--播放源 需要遍历 此处最好能做成tab形式-->
             @foreach (var play in ViewBag.play)
             {
                 <div class="stui-pannel stui-pannel-bg clearfix">
@@ -48,18 +49,15 @@
                         </div>
                         <div class="stui-pannel_bd col-pd clearfix">
                             <ul class="stui-content__playlist clearfix">
-                                @foreach (var address in play.PlayAddresses)
+                                @for (int i = 1; i <= play.PlayAddresses.Length; i++)
                                 {
-                                    <li><a href="https://www.fff21.com/bo/34219-1-1.html">@address</a></li>
+                                    <li><a href="/play/@ViewBag.Video.Id?number=@i&resource=@play.ResourceId"><span>@i</span></a></li>
                                 }
                             </ul>
                         </div>
                     </div>
                 </div>
             }
-
-
-
             <div class="stui-pannel stui-pannel-bg clearfix">
                 <div class="stui-pannel-box">
                     <div class="stui-pannel_hd">
@@ -69,115 +67,119 @@
                     </div>
                     <div class="stui-pannel_bd">
                         <div class="detail col-pd">
-                            <span class="detail-sketch">胡八一、王胖子和大金牙被村民编造的绣花鞋的故事所骗，前往陕西古蓝县。水路艰险，胡八一挺身让众人脱险。在招待所幸遇陈瞎子提醒，得以逃脱村民圈套。三人无意掉入“龙岭迷窟”遭蝙蝠袭击，发现身上长出红斑，决定</span>
+                            <span class="detail-sketch">@ViewBag.Video.Describes</span>
                             <span class="detail-content" style="display: none;">@ViewBag.Video.Describes</span>
-                            <a class="detail-more" href="javascript:;">详情<i class="icon iconfont icon-moreunfold"></i></a>
+                            @*<a class="detail-more" href="javascript:;">详情<i class="icon iconfont icon-moreunfold"></i></a>*@
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="stui-pannel stui-pannel-bg clearfix">
-                <div class="stui-pannel-box">
-                    <div class="stui-pannel_hd">
-                        <div class="stui-pannel__head clearfix">
-                            <h3 class="title"><img src="~/images/icon_6.png" />猜你喜欢</h3>
-                        </div>
+
+        <div class="stui-pannel stui-pannel-bg clearfix">
+            <div class="stui-pannel-box">
+                <div class="stui-pannel_hd">
+                    <div class="stui-pannel__head clearfix">
+                        <h3 class="title"><img src="~/images/icon_6.png" />猜你喜欢</h3>
                     </div>
-                    <div class="stui-pannel_bd">
-                        <ul class="stui-vodlist__bd clearfix">
-                            <!--此处遍历 猜你喜欢 10个-->
+                </div>
+                <div class="stui-pannel_bd">
+                    <ul class="stui-vodlist__bd clearfix">
+                        @foreach (var recommend in ViewBag.recommends)
+                        {
                             <li class="col-md-5 col-sm-4 col-xs-3">
                                 <div class="stui-vodlist__box">
-                                    <a class="stui-vodlist__thumb lazyload" href="https://www.fff21.com/vod/48986.html" title="绝地反击" data-original="https://tu.tianzuida.com/pic/upload/vod/2020-11-02/202011021604247326.jpg"><span class="play hidden-xs"></span><span class="pic-text text-right">更新到16集</span></a>
+                                    <a class="stui-vodlist__thumb lazyload" href="/detail/@recommend.Id" title="@recommend.Name" style="background-image: url(@recommend.Image);"><span class="play hidden-xs"></span><span class="pic-text text-right">@recommend.Remark</span></a>
                                     <div class="stui-vodlist__detail">
-                                        <h4 class="title text-overflow"><a href="https://www.fff21.com/vod/48986.html" title="绝地反击">绝地反击</a></h4>
-                                        <p class="text text-overflow text-muted hidden-xs">王新,阿丽亚</p>
+                                        <h4 class="title text-overflow"><a href="/detail/@recommend.Id" title="@recommend.Name">@recommend.Name</a></h4>
+                                        <p class="text text-overflow text-muted hidden-xs">@recommend.Actor</p>
                                     </div>
                                 </div>
                             </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="stui-pannel stui-pannel-bg clearfix">
-                <div class="stui-pannel-box clearfix">
-                    <div class="stui-pannel_bd clearfix">
-                        <div class="stui-pannel_hd">
-                            <div class="stui-pannel__head clearfix">
-                                <h3 class="title"><img src="~/images/icon_30.png" />影片评论</h3>
-                            </div>
-                        </div>
-                        <div class="stui-pannel_bd">
-                            <div class="mac_comment" data-id="34219" data-mid="1">
-                                该功能暂未开启...
-                            </div>
-                        </div>
-                    </div>
+                        }
+
+                    </ul>
                 </div>
             </div>
         </div>
-        <!--右边-->
-        <div class="col-lg-wide-25 col-xs-1 stui-pannel-side visible-lg">
-            <div class="stui-pannel stui-pannel-bg clearfix">
-                <div class="stui-pannel-box">
-                    <div class="stui-pannel_hd">
-                        <div class="text-center">
-                            <p class="text-muted">扫码用手机观看</p>
-                            <p id="qrcode2" style="padding-left: 35px;" title="https://www.fff21.com/vod/34219.html">
-                                <canvas width="160" height="160" style="display: none;"></canvas>
-                                <img class="img-responsive" src="data:image/png;base64,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" style="display: block;" />
-                            </p>
-                            <p class="text-muted margin-0">分享到朋友圈</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="stui-pannel stui-pannel-bg clearfix">
-                <div class="stui-pannel-box">
+
+        <div class="stui-pannel stui-pannel-bg clearfix">
+            <div class="stui-pannel-box clearfix">
+                <div class="stui-pannel_bd clearfix">
                     <div class="stui-pannel_hd">
                         <div class="stui-pannel__head clearfix">
-                            <h3 class="title"><img src="~/images/icon_12.png" /><a href="https://www.fff21.com/search/----%E5%9B%BD%E4%BA%A7---------.html" target="_blank">国产</a>&nbsp;热播榜</h3>
+                            <h3 class="title"><img src="~/images/icon_30.png" />影片评论</h3>
                         </div>
                     </div>
                     <div class="stui-pannel_bd">
-                        <ul class="stui-vodlist__media active col-pd clearfix">
-                            <li>
-                                <div class="thumb">
-                                    <a class="m-thumb stui-vodlist__thumb lazyload" href="https://www.fff21.com/vod/43441.html" title="传闻中的陈芊芊" data-original="/upload/vod/20200518-1/2a00f7cc763a06d2190ea04f7698d378.jpg" style="background-image: url(&quot;/upload/vod/20200518-1/2a00f7cc763a06d2190ea04f7698d378.jpg&quot;);"></a>
-                                </div>
-                                <div class="detail detail-side">
-                                    <h4 class="title"><a href="https://www.fff21.com/vod/43441.html"><i class="icon iconfont icon-more text-muted pull-right"></i>传闻中的陈芊芊</a></h4>
-                                    <p class="font-12"><span class="text-muted">类型：</span>国产，<span class="text-muted">地区：</span>大陆</p>
-                                    <p class="font-12 margin-0"><span class="text-muted">主演：</span>赵露思,丁禹兮,盛英</p>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="stui-vodlist__rank col-pd clearfix">
-                            <li><a href="https://www.fff21.com/vod/34219.html" title="龙岭迷窟"><span class="text-muted pull-right hidden-md">完结</span><span class="badge badge-first">1</span>龙岭迷窟</a></li>
-                            <li><a href="https://www.fff21.com/vod/43443.html" title="亲爱的义祁君"><span class="text-muted pull-right hidden-md">36集全</span><span class="badge badge-second">2</span>亲爱的义祁君</a></li>
-                            <li><a href="https://www.fff21.com/vod/42414.html" title="韫色过浓"><span class="text-muted pull-right hidden-md">24集全+番外</span><span class="badge badge-third">3</span>韫色过浓</a></li>
-                            <li><a href="https://www.fff21.com/vod/46852.html" title="琉璃"><span class="text-muted pull-right hidden-md">更新到53集</span><span class="badge">4</span>琉璃</a></li>
-                            <li><a href="https://www.fff21.com/vod/30119.html" title="爱情公寓第五部"><span class="text-muted pull-right hidden-md">完结</span><span class="badge">5</span>爱情公寓第五部</a></li>
-                            <li><a href="https://www.fff21.com/vod/41720.html" title="我的刺猬女孩"><span class="text-muted pull-right hidden-md">24集全</span><span class="badge">6</span>我的刺猬女孩</a></li>
-                            <li><a href="https://www.fff21.com/vod/44416.html" title="你是我的命中注定"><span class="text-muted pull-right hidden-md">36集全</span><span class="badge">7</span>你是我的命中注定</a></li>
-                            <li><a href="https://www.fff21.com/vod/44677.html" title="奈何BOSS又如何"><span class="text-muted pull-right hidden-md">更新到20集</span><span class="badge">8</span>奈何BOSS又如</a></li>
-                            <li><a href="https://www.fff21.com/vod/33255.html" title="三千鸦杀"><span class="text-muted pull-right hidden-md">完结</span><span class="badge">9</span>三千鸦杀</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="stui-pannel stui-pannel-bg clearfix">
-                <div class="stui-pannel-box">
-                    <div class="stui-pannel_hd">
-                        <div class="stui-pannel__head clearfix">
-                            <a class="more text-muted pull-right" href="https://www.fff21.com/topic.html">更多<i class="icon iconfont icon-more"></i></a>
-                            <h3 class="title"><img src="~/images/icon_5.png" />推荐专题</h3>
+                        <div class="mac_comment" data-id="34219" data-mid="1">
+                            该功能暂未开启...
                         </div>
-                    </div>
-                    <div class="stui-pannel_bd">
-                        <ul class="stui-vodlist clearfix"></ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+            
+            <!--右边-->
+            <div class="col-lg-wide-25 col-xs-1 stui-pannel-side visible-lg">
+                <div class="stui-pannel stui-pannel-bg clearfix">
+                    <div class="stui-pannel-box">
+                        <div class="stui-pannel_hd">
+                            <div class="text-center">
+                                <p class="text-muted">扫码用手机观看</p>
+                                <p id="qrcode2" style="padding-left: 35px;" title="https://www.fff21.com/vod/34219.html">
+                                    <canvas width="160" height="160" style="display: none;"></canvas>
+                                    <img class="img-responsive" src="data:image/png;base64,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" style="display: block;" />
+                                </p>
+                                <p class="text-muted margin-0">分享到朋友圈</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stui-pannel stui-pannel-bg clearfix">
+                    <div class="stui-pannel-box">
+                        <div class="stui-pannel_hd">
+                            <div class="stui-pannel__head clearfix">
+                                <h3 class="title"><img src="~/images/icon_12.png" /><a href="/series/@ViewBag.tops[0].SeriesTypeId" target="_blank"></a>热播榜</h3>
+                            </div>
+                        </div>
+                        <div class="stui-pannel_bd">
+                            <ul class="stui-vodlist__media active col-pd clearfix">
+                                <li>
+                                    <div class="thumb">
+                                        <a class="m-thumb stui-vodlist__thumb lazyload" href="/detail/@ViewBag.tops[0].Id" title="@ViewBag.tops[0].Name" style="background-image: url(&quot;@ViewBag.tops[0].Image&quot;);"></a>
+                                    </div>
+                                    <div class="detail detail-side">
+                                        <h4 class="title"><a href="#"><i class="icon iconfont icon-more text-muted pull-right"></i>@ViewBag.tops[0].Name</a></h4>
+                                        <p class="font-12"><span class="text-muted">类型：</span>@ViewBag.tops[0].CategoryTypeNames</p>
+                                        <p class="font-12 margin-0"><span class="text-muted">地区：</span>@ViewBag.tops[0].AreaName</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="stui-vodlist__rank col-pd top-text clearfix">
+                                @{
+                                    string[] classes = new string[] { "badge-first", "badge-second", "badge-third", "", "", "", "", "", "", "" };
+                                }
+                                @for (int index = 1; index <= ViewBag.tops.Count; index++)
+                                {
+                                    <li><a href="/detail/@ViewBag.tops[index - 1].Id" title="@ViewBag.tops[index - 1].Name"><span class="text-muted pull-right hidden-md">@ViewBag.tops[index - 1].Remark</span><span class="badge @classes[index-1]">@index</span>@ViewBag.tops[index - 1].Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="stui-pannel stui-pannel-bg clearfix">
+                    <div class="stui-pannel-box">
+                        <div class="stui-pannel_hd">
+                            <div class="stui-pannel__head clearfix">
+                                <a class="more text-muted pull-right" href="#">更多<i class="icon iconfont icon-more"></i></a>
+                                <h3 class="title"><img src="~/images/icon_5.png" />推荐专题</h3>
+                            </div>
+                        </div>
+                        <div class="stui-pannel_bd">
+                            <ul class="stui-vodlist clearfix"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
