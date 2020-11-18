@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QP.Entity;
 
 namespace QP.Entity.Migrations
 {
     [DbContext(typeof(QPContext))]
-    partial class QPContextModelSnapshot : ModelSnapshot
+    [Migration("20201117092145_AddLanguage")]
+    partial class AddLanguage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -358,11 +360,6 @@ namespace QP.Entity.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<float>("Rate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("float")
-                        .HasDefaultValue(8f);
-
                     b.Property<string>("Remark")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
@@ -441,7 +438,7 @@ namespace QP.Entity.Migrations
                     b.HasOne("QP.Entity.CategoryType", "CategoryType")
                         .WithMany()
                         .HasForeignKey("CategoryTypeId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -450,13 +447,13 @@ namespace QP.Entity.Migrations
                     b.HasOne("QP.Entity.VideoBasicInfo", "VideoBasicInfo")
                         .WithMany()
                         .HasForeignKey("BasicInfoId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("QP.Entity.Resource", "Resource")
                         .WithMany()
                         .HasForeignKey("ResourceId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

@@ -33,6 +33,7 @@ namespace QP.Controllers
         }
 
         [Route("/")]
+        [Route("/index")]
         public async Task<IActionResult> Index()
         {
             var recents = await _basicInfoService.GetListOrderByAsync(orderPredicate:x => x.LastModificationTime, size: 18);
@@ -45,7 +46,7 @@ namespace QP.Controllers
             var recommends = new List<IndexTypeViewDto>();
             foreach (var series in serieses)
             {
-                var recommend = await _basicInfoService.GetListTopsAsync(series.Id, 14);
+                var recommend = await _basicInfoService.GetListTopsAsync(0, series.Id, 14);
                 //var recommendTop = await _basicInfoService.GetListOrderBy(wherePredicate: x => x.SeriesTypeId == series.Id, orderPredicate: x => x.Count, size: 10);
                 recommends.Add(new IndexTypeViewDto
                 {
@@ -80,7 +81,7 @@ namespace QP.Controllers
             var playInfo = await _playInfoService.GetPlayInfos(id);
 
             // 推荐
-            var recommends = await _basicInfoService.GetListRecommendsAsync(id, basicInfo.Dierctor, basicInfo.Actor, basicInfo.En);
+            var recommends = await _basicInfoService.GetListRecommendsAsync(id, basicInfo.Dierctor, basicInfo.Actor, basicInfo.En, basicInfo.Rate);
             // 右侧推荐最热
             var tops = await _basicInfoService.GetListTopsAsync(id, basicInfo.SeriesTypeId);
             ViewBag.video = basicInfo;
@@ -93,11 +94,17 @@ namespace QP.Controllers
         [Route("/play/{id}")]
         public async Task<IActionResult> Play(int id, VodPlayQueryVo vo)
         {
+            
+
             var basicInfo = await _basicInfoService.GetAsync(id);
             var playInfo = await _playInfoService.GetPlayInfos(id);
             var currentVod = playInfo
                 .Where(x => x.ResourceId == vo.ResourceId)
                 .FirstOrDefault();
+            // 推荐
+            var recommends = await _basicInfoService.GetListRecommendsAsync(id, basicInfo.Dierctor, basicInfo.Actor, basicInfo.En, basicInfo.Rate);
+            // 右侧推荐最热
+            var tops = await _basicInfoService.GetListTopsAsync(id, basicInfo.SeriesTypeId);
             var currentAddress = "#";
             if(currentVod != null)
             {
@@ -108,6 +115,8 @@ namespace QP.Controllers
             ViewBag.currentAddress = currentAddress;
             ViewBag.currentMax = currentVod.PlayAddresses.Length;
             ViewBag.vo = vo;
+            ViewBag.tops = tops;
+            ViewBag.recommends = recommends;
             return View();
         }
 

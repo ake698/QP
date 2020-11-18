@@ -17,10 +17,14 @@ namespace QP.Entity.ModelBuilders
             b.Property(p => p.Count)
                 .HasDefaultValue(0);
 
+            b.Property(p => p.Rate)
+                .HasDefaultValue(8);
+
             b.HasOne(p => p.CategoryType)
                 .WithMany()
                 .IsRequired()
-                .HasForeignKey(p => p.CategoryTypeId);
+                .HasForeignKey(p => p.CategoryTypeId)
+                .OnDelete(DeleteBehavior.NoAction);
 
         }
     }

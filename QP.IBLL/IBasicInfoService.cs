@@ -11,6 +11,6 @@ namespace QP.IBLL
         //Task<BasicInfoDto> GetListOrderByLastModificationTime(int size);
         Task<PageResultDto<BasicInfoDto>> GetListPageAsync(int seriesId, VodQueryVo vo);
         Task<List<BasicInfoDto>> GetListTopsAsync(int id, int seriesId, int size = 10);
-        Task<List<BasicInfoDto>> GetListRecommendsAsync(int id, string dierctor, string actor, string en, int size = 10);
+        Task<List<BasicInfoDto>> GetListRecommendsAsync(int id, string dierctor, string actor, string en, float rate, int size = 10);
     }
 }

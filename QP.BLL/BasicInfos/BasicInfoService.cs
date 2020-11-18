@@ -37,9 +37,13 @@ namespace QP.BLL
             return await PageAsync(datas, vo.Page);
         }
 
-        public async Task<List<BasicInfoDto>> GetListRecommendsAsync(int id, string dierctor, string actor, string en, int size = 10)
+        public async Task<List<BasicInfoDto>> GetListRecommendsAsync(int id, string dierctor, string actor, string en, float rate, int size = 10)
         {
-            var recommends = await GetListOrderByAsync(wherePredicate: x => x.Actor == actor || x.Dierctor == dierctor || x.En.StartsWith(en.Substring(0, 1)), orderPredicate: x => x.LastModificationTime, size: size + 1);
+            List<BasicInfoDto> recommends;
+            if (string.IsNullOrWhiteSpace(dierctor) || string.IsNullOrWhiteSpace(actor))
+                recommends = await GetListOrderByAsync(x => x.Rate == rate || x.En.StartsWith(en.Substring(0, 1)), x => x.LastModificationTime, false, size + 1);
+            else
+                recommends = await GetListOrderByAsync(wherePredicate: x => x.Actor == actor || x.Dierctor == dierctor || x.En.StartsWith(en.Substring(0, 1)), orderPredicate: x => x.LastModificationTime, size: size + 1);
             return recommends.Where(x => x.Id != id).ToList();
         }
 

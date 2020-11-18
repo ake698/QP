@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * Edition v2.0 Copyright 2016-2018 http://v.shoutu.cn
  * Email 726662013@qq.com,admin@shoutu.cn
  */
@@ -59,8 +59,8 @@ body{padding-top:80px}
 .stui-content__detail .score{margin-bottom: 15px;}
 .stui-content__detail .score .branch{display: inline-block; margin-left: 10px; font-family: Georgia,"Times New Roman",Times,serif; font-size: 24px; line-height: 24px; color: #09BB07;}
 .stui-content__detail .score .branch .text{ font-size: 12px;}
-.stui-content__detail .score .star{display: inline-block; position: relative; top: 5px; width: 160px; height: 25px; background: url(../img/star1.png) 0 0 no-repeat;}
-.stui-content__detail .score .star .star-cur{display: inline-block; background: url(../img/star.png) 0 0 no-repeat; height: 25px; position: absolute; top: 0;  z-index: 1;}
+.stui-content__detail .score .star{display: inline-block; position: relative; top: 5px; width: 160px; height: 25px; background: url(../images/star1.png) 0 0 no-repeat;}
+.stui-content__detail .score .star .star-cur{display: inline-block; background: url(../images/star.png) 0 0 no-repeat; height: 25px; position: absolute; top: 0;  z-index: 1;}
 .detail-sketch,.detail-content{ font-size: 14px; line-height: 25px;}
 .detail-content img{ max-width: 100%;}
 
