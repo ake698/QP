@@ -1,7 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "分类";
-    ViewData["KeyWords"] = "千频影视,手机影院,最新电影";
-    ViewData["Description"] = "千频影视是最新电影和热播电视剧免费在线观看的手机影院，这里为影迷提供全网最新最全无广告热门电影，最新热门美剧、韩剧、日剧等剧集在线观看！";
+    ViewData["Title"] = $"好看的{ViewBag.seriesName}大全 - 千频影视";
+    ViewData["KeyWords"] = $"{ViewBag.seriesName}，免费{ViewBag.seriesName}，热播{ViewBag.seriesName}，{ViewBag.seriesName}在线观看";
+    ViewData["Description"] = "为您提供最新{ViewBag.seriesName}免费在线观看的手机影院，这里为影迷提供全网最新最全无广告热门{ViewBag.seriesName}在线观看！";
     ViewBag.Url = $"?CategoryId={ViewBag.vo.CategoryId}&AreaName={ViewBag.vo.AreaName}&Year={ViewBag.vo.Year}&Language={ViewBag.vo.Language}&Letter={ViewBag.vo.Letter}";
 }
 

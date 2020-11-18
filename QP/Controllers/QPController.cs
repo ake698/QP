@@ -66,9 +66,11 @@ namespace QP.Controllers
         {
             var categories = await _categoryService.GetListAsync(x => x.SeriesTypeId == id);
             var vods = await _basicInfoService.GetListPageAsync(id, vo);
+            var series = await _seriesTypeService.GetAsync(id);
             ViewBag.vo = vo;
             ViewBag.categories = categories;
             ViewBag.vods = vods;
+            ViewBag.seriesName = series.Name;
             return View();
         }
 
