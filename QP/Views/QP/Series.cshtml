@@ -114,16 +114,18 @@
         <li>
             <a href="@ViewBag.Url&Page=1">首页</a>
         </li>
-        @if (ViewBag.vods.CurrentPage > 1)
-        {
-            <li>
-                <a href="@ViewBag.Url&Page=@(ViewBag.vods.CurrentPage - 1)">上一页</a>
-            </li>
-        }
-
         @{
             var PageActive = "";
+            int prePage = ViewBag.vods.CurrentPage - 1;
+            int nextPage = ViewBag.vods.CurrentPage + 1;
+            if (ViewBag.vods.CurrentPage <= 1)
+                prePage = 1;
+            if (ViewBag.vods.CurrentPage >= ViewBag.vods.MaxPage)
+                nextPage = ViewBag.vods.MaxPage;
         }
+        <li>
+            <a href="@ViewBag.Url&Page=@prePage">上一页</a>
+        </li>
         @foreach (var pageNum in ViewBag.vods.Pages)
         {
 
@@ -138,12 +140,10 @@
         <li class="active visible-xs">
             <span class="num">@ViewBag.vods.CurrentPage/@ViewBag.vods.MaxPage</span>
         </li>
-        @if (ViewBag.vods.CurrentPage < ViewBag.vods.MaxPage)
-        {
-            <li>
-                <a href="@ViewBag.Url&Page=@(ViewBag.vods.CurrentPage + 1)">下一页</a>
-            </li>
-        }
+
+        <li>
+            <a href="@ViewBag.Url&Page=@nextPage">下一页</a>
+        </li>
         <li>
             <a href="@ViewBag.Url&Page=@ViewBag.vods.MaxPage">尾页</a>
         </li>

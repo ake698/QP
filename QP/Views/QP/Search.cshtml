@@ -1,0 +1,144 @@
+﻿@{
+    ViewData["Title"] = $"{ViewBag.vo.Key} 搜索结果 - 千频影视";
+    ViewData["KeyWords"] = $"{ViewBag.vo.Key} 搜索结果";
+    ViewData["Description"] = $"{ViewBag.vo.Key} 搜索结果";
+}
+
+<div class="row">
+    <div class="col-lg-wide-75 col-xs-1 padding-0">
+        <div class="stui-pannel stui-pannel-bg clearfix">
+            <div class="stui-pannel-box">
+                <div class="stui-pannel_hd">
+                    <div class="stui-pannel__head active bottom-line clearfix">
+                        <h3 class="title">
+                            <img src="~/images/icon_27.png" />与“@ViewBag.vo.Key”相关的影片
+                        </h3>
+                    </div>
+                </div>
+                <div class="stui-pannel_bd">
+                    <ul class="stui-vodlist__media col-pd clearfix">
+                        @foreach (var video in ViewBag.results.Datas)
+                        {
+                            <li class="active clearfix">
+                                <div class="thumb">
+                                    <a class="v-thumb stui-vodlist__thumb lazyload" href="/detail/@video.Id" title="@video.Name" data-original="@video.Image">
+                                        <span class="play hidden-xs"></span>
+                                        <span class="pic-text text-right">@video.Remark</span>
+                                    </a>
+                                </div>
+                                <div class="detail">
+                                    <h3 class="title">
+                                        <a href="/detail/@video.Id">@video.Name</a>
+                                    </h3>
+                                    <p>
+                                        <span class="text-muted">导演：</span>@video.Dierctor
+                                    </p>
+                                    <p>
+                                        <span class="text-muted">主演：</span>@video.Actor
+                                    </p>
+                                    <p class="hidden-mi">
+                                        <span class="text-muted">类型：</span>@video.CategoryTypeNames
+                                        <span class="split-line"></span>
+                                        <span class="text-muted">地区：</span>@video.AreaName
+                                        <span class="hidden-xs">
+                                            <span class="split-line"></span>
+                                            <span class="text-muted">年份：</span>@video.Year
+                                        </span>
+                                    </p>
+                                    <p class="margin-0">
+                                        <a class="btn btn-min btn-primary" target="_blank" href="/play/@video.Id">立即播放</a>&nbsp;&nbsp;
+                                        <a class="btn btn-min btn-default" target="_blank" href="/detail/@video.Id">查看详情</a>
+                                    </p>
+                                </div>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="stui-page text-center clearfix">
+            @{
+                var PageActive = "";
+                int prePage = ViewBag.results.CurrentPage - 1;
+                int nextPage = ViewBag.results.CurrentPage + 1;
+                if (ViewBag.results.CurrentPage <= 1)
+                    prePage = 1;
+                if (ViewBag.results.CurrentPage >= ViewBag.results.MaxPage)
+                    nextPage = ViewBag.results.MaxPage;
+            }
+
+            <li>
+                <a href="/search?key=@ViewBag.vo.Key&page=1">首页</a>
+            </li>
+            <li>
+                <a href="/search?key=@ViewBag.vo.Key&page=prePage">上一页</a>
+            </li>
+            @foreach (var pageNum in ViewBag.results.Pages)
+            {
+                <li class="hidden-xs @PageActive">
+                    <a href="/search?key=@ViewBag.vo.Key&page=@pageNum">@pageNum</a>
+                </li>
+            }
+            <li class="active visible-xs">
+                <span class="num">@ViewBag.results.CurrentPage/@ViewBag.results.MaxPage</span>
+            </li>
+            <li>
+                <a href="/search?key=@ViewBag.vo.Key&page=@nextPage">下一页</a>
+            </li>
+            <li>
+                <a href="/search?key=@ViewBag.vo.Key&page=@ViewBag.results.MaxPage">尾页</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-wide-25 stui-pannel-side hidden-md hidden-sm hidden-xs">
+        <div class="stui-pannel stui-pannel-bg clearfix">
+            <div class="stui-pannel-box">
+                <div class="stui-pannel_hd">
+                    <div class="stui-pannel__head active bottom-line clearfix">
+                        <h3 class="title">
+                            <img src="~/images/icon_1.png" />电影热播榜
+                        </h3>
+                    </div>
+                </div>
+                <div class="stui-pannel_bd clearfix">
+                    <ul class="stui-vodlist__text active col-pd clearfix">
+                        @foreach (var movie in @ViewBag.movies)
+                        {
+                            <li class="top-line-dot">
+                                <a class="text-overflow" href="/detail/@movie.Id" title="@movie.Name">
+                                    <span class="text-muted pull-right">@movie.Remark</span>
+                                    @movie.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="stui-pannel stui-pannel-bg clearfix">
+            <div class="stui-pannel-box">
+                <div class="stui-pannel_hd">
+                    <div class="stui-pannel__head active bottom-line clearfix">
+                        <h3 class="title">
+                            <img src="~/images/icon_2.png" />连续剧热播榜
+                        </h3>
+                    </div>
+                </div>
+                <div class="stui-pannel_bd clearfix">
+                    <ul class="stui-vodlist__text active col-pd clearfix">
+                        @foreach (var tv in @ViewBag.tvs)
+                        {
+                            <li class="top-line-dot">
+                                <a class="text-overflow" href="/detail/@tv.Id" title="@tv.Name">
+                                    <span class="text-muted pull-right">@tv.Remark</span>
+                                    @tv.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

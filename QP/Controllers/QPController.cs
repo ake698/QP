@@ -97,8 +97,6 @@ namespace QP.Controllers
         [Route("/play/{id}")]
         public async Task<IActionResult> Play(int id, VodPlayQueryVo vo)
         {
-            
-
             var basicInfo = await _basicInfoService.GetAsync(id);
             var playInfo = await _playInfoService.GetPlayInfos(id);
             var currentVod = playInfo
@@ -122,24 +120,19 @@ namespace QP.Controllers
             ViewBag.recommends = recommends;
             return View();
         }
-
-        public IActionResult Privacy()
+        
+        [Route("/search")]
+        public async Task<IActionResult> Search(SearchQueryVo vo)
         {
+            var movies = await _basicInfoService.GetListOrderByAsync(x => x.SeriesTypeId == (int)SeriesTypeEnum.Movie, x => x.Count, false, 10);
+            var tvs = await _basicInfoService.GetListOrderByAsync(x => x.SeriesTypeId == (int)SeriesTypeEnum.TV, x => x.Count, false, 10);
+            var results = await _basicInfoService.GetListPageAsync(wherePredicate: x => x.Name.Contains(vo.Key) || x.En.Contains(vo.Key), orderPredicate:x=>x.Count);
+
+            ViewBag.Movies = movies;
+            ViewBag.tvs = tvs;
+            ViewBag.results = results;
+            ViewBag.vo = vo;
             return View();
-        }
-
-        [HttpGet("/test")]
-        public async Task<List<CategoryTypeDto>> Test1()
-        {
-            return await _categoryService.GetListAsync(x => x.SeriesTypeId == 1);
-        }
-        [HttpGet("/test2")]
-        public async Task<PageResultDto<BasicInfoDto>> Test2()
-        {
-            var recents = await _basicInfoService.GetListOrderByAsync(null, x => x.LastModificationTime, false, 7);
-            var movices = await _basicInfoService.GetListOrderByAsync(x => x.SeriesTypeId == (int)SeriesTypeEnum.Movie, x => x.LastModificationTime, false, 6);
-            var pageDto = await _basicInfoService.GetListPageAsync(orderPredicate:x => x.LastModificationTime);
-            return pageDto;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
