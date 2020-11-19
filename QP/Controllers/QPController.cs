@@ -46,15 +46,16 @@ namespace QP.Controllers
             var recommends = new List<IndexTypeViewDto>();
             foreach (var series in serieses)
             {
-                var recommend = await _basicInfoService.GetListTopsAsync(0, series.Id, 14);
+                var recommend = await _basicInfoService.GetListTopsAsync(0, series.Id, 16);
                 //var recommendTop = await _basicInfoService.GetListOrderBy(wherePredicate: x => x.SeriesTypeId == series.Id, orderPredicate: x => x.Count, size: 10);
                 recommends.Add(new IndexTypeViewDto
                 {
-                    Recommends = recommend.Skip(10).Take(4).ToList(),
-                    RecommendTops = recommend.Take(10).ToList(),
+                    RecommendsForMoblie = recommend.Skip(4).Take(2).ToList(),
+                    Recommends = recommend.Take(4).ToList(),
+                    RecommendTops = recommend.Skip(6).Take(10).ToList(),
                     CategoryTypes = categoryDtos.Where(x => x.SeriesTypeId == series.Id).ToList(),
                     SeriesType = series
-                });
+                });;
             }
             ViewBag.recommends = recommends;
             return View();
