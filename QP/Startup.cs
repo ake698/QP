@@ -44,6 +44,11 @@ namespace QP
                 "QP.BLL"
             });
 
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<HeaderFilter>();
+            });
+
             // Ìí¼ÓAutoMapper
             services.AddAutoMapperAssembly("QP.BLL");
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -47,7 +46,6 @@ namespace QP.Controllers
             foreach (var series in serieses)
             {
                 var recommend = await _basicInfoService.GetListTopsAsync(0, series.Id, 16);
-                //var recommendTop = await _basicInfoService.GetListOrderBy(wherePredicate: x => x.SeriesTypeId == series.Id, orderPredicate: x => x.Count, size: 10);
                 recommends.Add(new IndexTypeViewDto
                 {
                     RecommendsForMoblie = recommend.Skip(4).Take(2).ToList(),
@@ -61,7 +59,7 @@ namespace QP.Controllers
             return View();
         }
 
-        //Category /series/{id}
+
         [Route("/series/{id}")]
         public async Task<IActionResult> Series(int id, [FromQuery]VodQueryVo vo)
         {
@@ -132,6 +130,12 @@ namespace QP.Controllers
             ViewBag.results = results;
             ViewBag.vo = vo;
             return View();
+        }
+
+        [HttpGet("/transfer")]
+        public IActionResult Transfer()
+        {
+            return PartialView();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

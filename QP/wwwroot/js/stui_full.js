@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     var pathName = window.location.pathname;
 
-    $("#categories").children().each(function () {
+    $("#index").siblings().each(function () {
         if ($(this).find("a").attr("href") == pathName) {
             $(this).addClass("active");
         }
