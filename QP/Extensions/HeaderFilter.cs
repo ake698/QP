@@ -15,12 +15,12 @@ namespace QP.Extensions
             Debug.WriteLine(ua);
             if (ua.Contains("micromessenger"))
             {
-                context.HttpContext.Response.Redirect("/transfer");
+                context.Result = new PartialViewResult { ViewName = "transfer" };
                 return;
             }
             if(ua.Contains("qq") && !ua.Contains("mqqbrowser"))
             {
-                context.HttpContext.Response.Redirect("/transfer");
+                context.Result = new PartialViewResult { ViewName = "transfer" };
                 return;
             }
             base.OnActionExecuting(context);
