@@ -47,10 +47,9 @@ namespace QP.BLL
 
         public async Task<List<BasicInfoDto>> GetListTopsAsync(int id, int seriesId, int size = 10)
         {
-            var tops = await GetListOrderByAsync(x => x.SeriesTypeId == seriesId && x.IsHot, x => x.LastModificationTime, false, size);
-            if (tops.Count < 2)
-                tops = await GetListOrderByAsync(x => x.SeriesTypeId == seriesId, x => x.LastModificationTime,false, size);
-            tops = tops.Where(x => x.Id != id).ToList();
+            var tops = await GetListOrderByAsync(x => x.SeriesTypeId == seriesId && x.IsHot && x.Id!=id, x => x.LastModificationTime, false, size);
+            if (tops.Count < size)
+                tops.AddRange(await GetListOrderByAsync(x => x.SeriesTypeId == seriesId && x.Id != id, x => x.LastModificationTime,false, size-tops.Count));
             return tops;
         }
     }
