@@ -128,7 +128,7 @@
                         {
                             <li class="col-md-5 col-sm-4 col-xs-3">
                                 <div class="stui-vodlist__box">
-                                    <a class="stui-vodlist__thumb lazyload" href="/detail/@recommend.Id" title="@recommend.Name" style="background-image: url(@recommend.Image);"><span class="play hidden-xs"></span><span class="pic-text text-right">@recommend.Remark</span></a>
+                                    <a class="stui-vodlist__thumb lazyload" href="/detail/@recommend.Id" title="@recommend.Name" data-original="@recommend.Image" style="background-image: url(@recommend.Image);"><span class="play hidden-xs"></span><span class="pic-text text-right">@recommend.Remark</span></a>
                                     <div class="stui-vodlist__detail">
                                         <h4 class="title text-overflow"><a href="/detail/@recommend.Id" title="@recommend.Name">@recommend.Name</a></h4>
                                         <p class="text text-overflow text-muted hidden-xs">@recommend.Actor</p>
@@ -166,7 +166,7 @@
                     <ul class="stui-vodlist__media active col-pd clearfix">
                         <li>
                             <div class="thumb">
-                                <a class="m-thumb stui-vodlist__thumb lazyload" href="/detail/@ViewBag.tops[0].Id" title="@ViewBag.tops[0].Name" style="background-image: url(&quot;@ViewBag.tops[0].Image&quot;);"></a>
+                                <a class="m-thumb stui-vodlist__thumb lazyload" href="/detail/@ViewBag.tops[0].Id" title="@ViewBag.tops[0].Name" data-original="@ViewBag.tops[0].Image" style="background-image: url(&quot;@ViewBag.tops[0].Image&quot;);"></a>
                             </div>
                             <div class="detail detail-side">
                                 <h4 class="title"><a href="#"><i class="icon iconfont icon-more text-muted pull-right"></i>@ViewBag.tops[0].Name</a></h4>
