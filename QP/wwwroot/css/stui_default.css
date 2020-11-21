@@ -114,7 +114,7 @@ body{padding-top:80px}
 	.stui-header__menu{margin:0;padding:0;}
 	.stui-header__menu:before{content:" ";position:absolute;left:0;top:0;right:0;width:100%;height:1px;-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:scaleY(.5);transform:scaleY(.5); border-top: 1px solid #323232;}
 	.stui-header__menu li{margin-top:0; margin-left: 10px; margin-right:10px}
-	.stui-header__menu li a{padding:0;line-height:38px;font-size:14px;white-space:nowrap}
+	.stui-header__menu li a{padding:0;line-height:38px;font-size:14px;white-space:nowrap;height:35px;}
 	.stui-header__menu li.active a{position:relative; color: #fff;}
 	.stui-header__user > li{ padding: 15px 0 10px; margin-right: 10px;}
 	.stui-header__user > li .dropdown{ right: 0;}
