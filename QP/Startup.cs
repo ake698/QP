@@ -49,6 +49,10 @@ namespace QP
                 options.Filters.Add<HeaderFilter>();
             });
 
+            services.AddSession(
+                options => options.Cookie.HttpOnly = true //½ûÖ¹js»ñÈ¡cookie
+                );
+
             // Ìí¼ÓAutoMapper
             services.AddAutoMapperAssembly("QP.BLL");
 
@@ -67,6 +71,8 @@ namespace QP
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
