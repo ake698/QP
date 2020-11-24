@@ -9,13 +9,13 @@ namespace QP.Entity.ModelBuilders
             var b = builder.Entity<VideoPlayInfo>();
             
             b.ToTable("Vod_PlayInfo");
-            b.BuilderFullEntity();
+            b.BuilderBaseEntity();
 
             b.HasOne(p => p.VideoBasicInfo)
                 .WithMany()
                 .IsRequired()
                 .HasForeignKey(p => p.BasicInfoId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             b.HasOne(p => p.Resource)
                 .WithMany()

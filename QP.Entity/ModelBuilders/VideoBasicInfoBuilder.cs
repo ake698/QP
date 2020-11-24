@@ -9,7 +9,7 @@ namespace QP.Entity.ModelBuilders
             var b = builder.Entity<VideoBasicInfo>();
             b.ToTable("Vod_BasicInfo");
 
-            b.BuilderFullEntity();
+            b.BuilderBaseEntity();
 
             b.Property(p => p.IsHot)
                 .HasDefaultValue(false);

@@ -1,6 +1,6 @@
 ﻿namespace QP.Entity
 {
-    public class VideoPlayInfo : FullEntity
+    public class VideoPlayInfo : BaseEntity
     {
         public VideoBasicInfo VideoBasicInfo { get; set; }
         public int BasicInfoId { get; set; }

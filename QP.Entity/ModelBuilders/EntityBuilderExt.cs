@@ -15,11 +15,6 @@ namespace QP.Entity.ModelBuilders
             builder.Property(p => p.IsDelete)
                 .IsRequired()
                 .HasDefaultValue(false);
-        }
-
-        public static void BuilderFullEntity<T>(this EntityTypeBuilder<T> builder) where T : FullEntity
-        {
-            builder.BuilderBaseEntity<T>();
 
             builder.Property(p => p.CreationTime)
                 .HasMaxLength(0)

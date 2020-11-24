@@ -18,6 +18,7 @@ namespace QP.Entity
             new CategoryBuilder(builder);
             new VideoBasicInfoBuilder(builder);
             new VideoPlayInfoBuilder(builder);
+            new MessageBuilder(builder);
         }
 
         public DbSet<SeriesType> SeriesTypes { get; set; }

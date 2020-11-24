@@ -6,7 +6,9 @@ namespace QP.Bussiness
     {
         public List<R> Datas { get; set; }
         public int DataCounts { get; set; }
+        public int PrePage { get; set; }
         public int CurrentPage { get; set; }
+        public int NextPage { get; set; }
         public int PageSize { get; set; }
         public int MaxPage { get; set; }
         public int[] Pages { get; set; }

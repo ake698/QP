@@ -2,7 +2,7 @@
     ViewData["Title"] = "留言板 - 千频影视";
     ViewData["KeyWords"] = "我想看,留言板 - 千频影视";
     ViewData["Description"] = $"留下你想观看的影视名称,或者说出你想说的话,我们将竭尽所能为你服务。 - 千频影视";
-
+    string pageActive = "";
 }
 <div class="row">
     <div class="col-lg-wide-3 col-xs-1">
@@ -29,39 +29,37 @@
         </div>
     </div>
     <div class="col-lg-wide-7 col-xs-1">
-        <div class="stui-pannel stui-pannel-bg clearfix">
-            <div class="stui-pannel-box clearfix">
-                <div class="col-pd">
-                    <div class="bottom-line">
-                        <span class="text-muted pull-right">112.32.*.*</span>
-                        <h4 class="title" style=" margin: 0 0 10px; padding-bottom: 10px;">游客</h4>
+        @foreach (var message in ViewBag.messages.Datas)
+        {
+            <div class="stui-pannel stui-pannel-bg clearfix">
+                <div class="stui-pannel-box clearfix">
+                    <div class="col-pd">
+                        <div class="bottom-line">
+                            <span class="text-muted pull-right">112.32.*.*</span>
+                            <h4 class="title" style=" margin: 0 0 10px; padding-bottom: 10px;">游客-@message.Id</h4>
+                        </div>
+                        <p class="con">@message.Content</p>
+                        <p class="text-muted font-12">@message.CreationTime</p>
                     </div>
-                    <p class="con">编号【9867】名称【深夜书店2】不能观看请检查修复，页面地址***s://***.fff21.***/bo/9867-2-1.html</p>
-                    <p class="text-muted font-12">2020-11-22 00:11:57</p>
                 </div>
             </div>
-        </div>
-        <div class="stui-pannel stui-pannel-bg clearfix">
-            <div class="stui-pannel-box clearfix">
-                <div class="col-pd">
-                    <div class="bottom-line">
-                        <span class="text-muted pull-right">112.32.*.*</span>
-                        <h4 class="title" style=" margin: 0 0 10px; padding-bottom: 10px;">游客</h4>
-                    </div>
-                    <p class="con">编号【38265】名称【我的英雄学院第4季】不能观看请检查修复，页面地址***s://***.fff21.***/bo/38265-1-25.html</p>
-                    <p class="text-muted font-12">2020-11-21 19:22:18</p>
-                </div>
-            </div>
-        </div>
+        }
+
         <ul class="stui-page text-center clearfix">
-            <li><a href="#">首页</a></li>
-            <li><a href="#">上一页</a></li>
-            <li class="hidden-xs active"><a href="#">1</a></li>
-            <li class="hidden-xs"><a href="#">2</a></li>
-            <li class="hidden-xs"><a href="h#">3</a></li>
-            <li class="active visible-xs"><span class="num">1/30</span></li>
-            <li><a href="#">下一页</a></li>
-            <li><a href="#">尾页</a></li>
+            <li><a href="/message?page=1">首页</a></li>
+            <li><a href="/message?page=@ViewBag.messages.PrePage">上一页</a></li>
+            @foreach (var pageNum in ViewBag.messages.Pages)
+            {
+                @if (ViewBag.messages.CurrentPage == pageNum)
+                    pageActive = "active"; 
+                else
+                    pageActive = ""; 
+                <li class="hidden-xs @pageActive"><a href="/message?page=@pageNum">@pageNum</a></li>
+            }
+
+            <li class="active visible-xs"><span class="num">@ViewBag.messages.CurrentPage/@ViewBag.messages.MaxPage</span></li>
+            <li><a href="/message?page=@ViewBag.messages.NextPage">下一页</a></li>
+            <li><a href="/message?page=@ViewBag.messages.MaxPage">尾页</a></li>
         </ul>
     </div>
 </div>

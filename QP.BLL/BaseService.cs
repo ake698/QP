@@ -24,6 +24,7 @@ namespace QP.BLL
         }
         public async Task<R> CreateAsync(T t)
         {
+            t.CreationTime = DateTime.Now;
             var entity = await _repository.CreateAsync(t);
             return _mapper.Map<R>(entity);
         }
@@ -90,6 +91,8 @@ namespace QP.BLL
                 CurrentPage = page,
                 PageSize = pageSize,
                 MaxPage = maxPage,
+                PrePage = page < 2 ? 1 : page - 1,
+                NextPage = page >= maxPage ? maxPage : page + 1, 
                 Pages = CaculatePages(page, maxPage, pageListSize)
             };
         }

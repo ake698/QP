@@ -146,8 +146,10 @@ namespace QP.Controllers
         }
 
         [HttpGet("/message")]
-        public IActionResult Message()
+        public async Task<IActionResult> Message(int page = 1)
         {
+            var messages = await _messageService.GetListPageAsync(orderPredicate: x => x.CreationTime, page:page);
+            ViewBag.messages = messages;
             return View();
         }
 
