@@ -170,8 +170,9 @@ namespace QP.Controllers
             return Ok("留言成功！");
         }
 
-        [Route("/verify")]
-        public IActionResult CreateIntCode()
+
+        [HttpGet("/verify")]
+        public IActionResult Verify()
         {
             string code = new Random().Next(999999).ToString("000000");
             HttpContext.Session.SetString("verify", code);
