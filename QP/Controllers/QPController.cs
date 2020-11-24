@@ -26,14 +26,16 @@ namespace QP.Controllers
         private readonly IBasicInfoService _basicInfoService;
         private readonly ISeriesTypeService _seriesTypeService;
         private readonly IPlayInfoService _playInfoService;
+        private readonly IMessageService _messageService;
 
-        public QPController(ILogger<QPController> logger, ICategoryService categoryService, IBasicInfoService basicInfoService, ISeriesTypeService seriesTypeService, IPlayInfoService playInfoService)
+        public QPController(ILogger<QPController> logger, ICategoryService categoryService, IBasicInfoService basicInfoService, ISeriesTypeService seriesTypeService, IPlayInfoService playInfoService, IMessageService messageService)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _categoryService = categoryService ?? throw new ArgumentNullException(nameof(categoryService));
             _basicInfoService = basicInfoService ?? throw new ArgumentNullException(nameof(basicInfoService));
             _seriesTypeService = seriesTypeService ?? throw new ArgumentNullException(nameof(seriesTypeService));
             _playInfoService = playInfoService ?? throw new ArgumentNullException(nameof(playInfoService));
+            _messageService = messageService ?? throw new ArgumentNullException(nameof(messageService));
         }
 
         [Route("/")]
@@ -150,13 +152,18 @@ namespace QP.Controllers
         }
 
         [HttpPost("/message")]
-        public IActionResult CreateMessageAsync(CreateMessageVo vo)
+        public async Task<IActionResult> CreateMessageAsync(CreateMessageVo vo)
         {
             if (!ModelState.IsValid)
                 return BadRequest("留言和验证码不能为空！");
             var code = HttpContext.Session.GetString("verify");
             if (!code.Equals(vo.VerifyCode))
                 return BadRequest("验证码错误!");
+
+            await  _messageService.CreateAsync(new Entity.Message
+            {
+                Content = vo.Content
+            });
 
             return Ok("留言成功！");
         }
@@ -166,73 +173,69 @@ namespace QP.Controllers
         {
             string code = new Random().Next(999999).ToString("000000");
             HttpContext.Session.SetString("verify", code);
-            using (Bitmap image = new Bitmap(76, 32))
+            using Bitmap image = new Bitmap(76, 32);
+            Random random = new Random();
+            int min = 70, max = 170;
+            Color bg;
+            using (Graphics g = Graphics.FromImage(image))
             {
-                Random random = new Random();
-                int min = 70, max = 170;
-                Color bg;
-                using (Graphics g = Graphics.FromImage(image))
+                int bad = random.Next(3);//总有一个颜色分量可能偏深色
+                bg = Color.FromArgb(random.Next(bad == 0 ? 120 : 200, 255), random.Next(bad == 1 ? 120 : 200, 255), random.Next(bad == 2 ? 120 : 200, 255));
+                g.Clear(bg);
+                Font font = new Font("Arial", 18, FontStyle.Bold);
+                Color c1 = Color.FromArgb(random.Next(min, max), random.Next(min, max), random.Next(min, max));
+                Color c2 = Color.FromArgb(random.Next(min, max), random.Next(min, max), random.Next(min, max));
+                //字体由上到下颜色渐变
+                LinearGradientBrush brush = new LinearGradientBrush(new Rectangle(0, 0, 10, 22), c1, c2, 90, true);
+                int x = random.Next(-8, -1);
+                for (int i = 0; i < code.Length; i++)
                 {
-                    int bad = random.Next(3);//总有一个颜色分量可能偏深色
-                    bg = Color.FromArgb(random.Next(bad == 0 ? 120 : 200, 255), random.Next(bad == 1 ? 120 : 200, 255), random.Next(bad == 2 ? 120 : 200, 255));
-                    g.Clear(bg);
-                    Font font = new Font("Arial", 18, FontStyle.Bold);
-                    Color c1 = Color.FromArgb(random.Next(min, max), random.Next(min, max), random.Next(min, max));
-                    Color c2 = Color.FromArgb(random.Next(min, max), random.Next(min, max), random.Next(min, max));
-                    //字体由上到下颜色渐变
-                    LinearGradientBrush brush = new LinearGradientBrush(new Rectangle(0, 0, 10, 22), c1, c2, 90, true);
-                    int x = random.Next(-8, -1);
-                    for (int i = 0; i < code.Length; i++)
-                    {
-                        Matrix transform = g.Transform;
-                        //上下波动
-                        transform.Shear(0, Convert.ToSingle((random.NextDouble() - 0.5) / 5));
-                        g.Transform = transform;
-                        x += random.Next(9, 11);
-                        g.DrawString(code.Substring(i, 1), font, brush, x, 3);
-                        g.ResetTransform();
-                    }
-                }
-                using (Bitmap destBmp = new Bitmap(image.Width, image.Height))
-                {
-                    using (Graphics g = Graphics.FromImage(destBmp))
-                    {
-                        // 填充位图背景
-                        g.FillRectangle(new SolidBrush(bg), 0, 0, destBmp.Width, destBmp.Height);
-
-                        double dBaseAxisLen = (double)destBmp.Height;
-                        double dPhase = 0;
-                        for (int i = 0; i < destBmp.Width; i++)
-                        {
-                            //干扰线
-                            //if ((i % 15) == 1) dPhase = random.NextDouble() * Math.PI * 2;
-                            for (int j = 0; j < destBmp.Height; j++)
-                            {
-                                double dx = Math.PI * j * 2 / dBaseAxisLen + dPhase;
-                                double dy = Math.Sin(dx);
-
-                                // 取得当前点的颜色
-                                int nOldX = i + (int)(dy * 3);
-                                int nOldY = j;
-
-                                Color color = image.GetPixel(i, j);
-                                if (nOldX >= 0 && nOldX < destBmp.Width && nOldY >= 0 && nOldY < destBmp.Height)
-                                {
-                                    destBmp.SetPixel(nOldX, nOldY, color);
-                                }
-                            }
-                        }
-                        g.SmoothingMode = SmoothingMode.HighSpeed;
-                    };
-                    MemoryStream ms = new MemoryStream();
-                    destBmp.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-                    byte[] b = new byte[ms.Length];
-                    ms.Position = 0;
-                    ms.Read(b, 0, Convert.ToInt32(ms.Length));
-                    ms.Close();
-                    return File(b, "image/jpeg");
+                    Matrix transform = g.Transform;
+                    //上下波动
+                    transform.Shear(0, Convert.ToSingle((random.NextDouble() - 0.5) / 5));
+                    g.Transform = transform;
+                    x += random.Next(9, 11);
+                    g.DrawString(code.Substring(i, 1), font, brush, x, 3);
+                    g.ResetTransform();
                 }
             }
+            using Bitmap destBmp = new Bitmap(image.Width, image.Height);
+            using (Graphics g = Graphics.FromImage(destBmp))
+            {
+                // 填充位图背景
+                g.FillRectangle(new SolidBrush(bg), 0, 0, destBmp.Width, destBmp.Height);
+
+                double dBaseAxisLen = (double)destBmp.Height;
+                double dPhase = 0;
+                for (int i = 0; i < destBmp.Width; i++)
+                {
+                    //干扰线
+                    //if ((i % 15) == 1) dPhase = random.NextDouble() * Math.PI * 2;
+                    for (int j = 0; j < destBmp.Height; j++)
+                    {
+                        double dx = Math.PI * j * 2 / dBaseAxisLen + dPhase;
+                        double dy = Math.Sin(dx);
+
+                        // 取得当前点的颜色
+                        int nOldX = i + (int)(dy * 3);
+                        int nOldY = j;
+
+                        Color color = image.GetPixel(i, j);
+                        if (nOldX >= 0 && nOldX < destBmp.Width && nOldY >= 0 && nOldY < destBmp.Height)
+                        {
+                            destBmp.SetPixel(nOldX, nOldY, color);
+                        }
+                    }
+                }
+                g.SmoothingMode = SmoothingMode.HighSpeed;
+            };
+            MemoryStream ms = new MemoryStream();
+            destBmp.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            byte[] b = new byte[ms.Length];
+            ms.Position = 0;
+            ms.Read(b, 0, Convert.ToInt32(ms.Length));
+            ms.Close();
+            return File(b, "image/jpeg");
         }
 
 

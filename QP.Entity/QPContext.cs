@@ -25,5 +25,6 @@ namespace QP.Entity
         public DbSet<Resource> Resources { get; set; }
         public DbSet<VideoBasicInfo> VideoBasicInfos { get; set; }
         public DbSet<VideoPlayInfo> VideoPlayInfos { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 }

@@ -22,6 +22,11 @@ namespace QP.BLL
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
+        public async Task<R> CreateAsync(T t)
+        {
+            var entity = await _repository.CreateAsync(t);
+            return _mapper.Map<R>(entity);
+        }
 
         public Task DeleteAsync(int id)
         {

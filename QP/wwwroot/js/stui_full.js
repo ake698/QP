@@ -25,9 +25,16 @@
             },
             error: function (data) {
                 //console.log(data.responseText);
+                $("#verify_img").click();
                 alert(data.responseText);
             }
         })
     });
+
+    $("#verify_img").click(function () {
+        $(this).attr("src", "/verify?" + Date.parse(new Date()));
+    })
 });
+
+
 

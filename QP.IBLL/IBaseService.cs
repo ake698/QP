@@ -9,6 +9,7 @@ namespace QP.IBLL
 {
     public interface IBaseService<T, R>
     {
+        Task<R> CreateAsync(T t);
         Task<R> GetAsync(int id);
 
         Task<List<R>> GetListAsync();
