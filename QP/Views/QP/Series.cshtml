@@ -3,6 +3,7 @@
     ViewData["KeyWords"] = $"{ViewBag.seriesName}，免费{ViewBag.seriesName}，热播{ViewBag.seriesName}，{ViewBag.seriesName}在线观看";
     ViewData["Description"] = "为您提供最新{ViewBag.seriesName}免费在线观看的手机影院，这里为影迷提供全网最新最全无广告热门{ViewBag.seriesName}在线观看！";
     ViewBag.Url = $"?CategoryId={ViewBag.vo.CategoryId}&AreaName={ViewBag.vo.AreaName}&Year={ViewBag.vo.Year}&Language={ViewBag.vo.Language}&Letter={ViewBag.vo.Letter}";
+    var PageActive = "";
 }
 
 
@@ -52,7 +53,7 @@
                     <li class="@YealAll">
                         <a href="?CategoryId=@ViewBag.vo.CategoryId&AreaName=@ViewBag.vo.AreaName&Language=@ViewBag.vo.Language&Letter=@ViewBag.vo.Letter">全部</a>
                     </li>
-                    @for(int y=2010; y<=2020; y++)
+                    @for(int y=2020; y>=2010; y--)
                     {
                         @if(y.ToString() == ViewBag.vo.Year)
                         {
@@ -114,17 +115,8 @@
         <li>
             <a href="@ViewBag.Url&Page=1">首页</a>
         </li>
-        @{
-            var PageActive = "";
-            int prePage = ViewBag.vods.CurrentPage - 1;
-            int nextPage = ViewBag.vods.CurrentPage + 1;
-            if (ViewBag.vods.CurrentPage <= 1)
-                prePage = 1;
-            if (ViewBag.vods.CurrentPage >= ViewBag.vods.MaxPage)
-                nextPage = ViewBag.vods.MaxPage;
-        }
         <li>
-            <a href="@ViewBag.Url&Page=@prePage">上一页</a>
+            <a href="@ViewBag.Url&Page=@ViewBag.vods.PrePage">上一页</a>
         </li>
         @foreach (var pageNum in ViewBag.vods.Pages)
         {
@@ -142,7 +134,7 @@
         </li>
 
         <li>
-            <a href="@ViewBag.Url&Page=@nextPage">下一页</a>
+            <a href="@ViewBag.Url&Page=@ViewBag.vods.NextPage">下一页</a>
         </li>
         <li>
             <a href="@ViewBag.Url&Page=@ViewBag.vods.MaxPage">尾页</a>

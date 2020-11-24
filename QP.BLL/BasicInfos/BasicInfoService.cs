@@ -32,7 +32,7 @@ namespace QP.BLL
                 datas = datas.Where(x => x.Year == vo.Year);
             if (!string.IsNullOrEmpty(vo.Letter))
                 datas = datas.Where(x => x.En.StartsWith(vo.Letter));
-            return await PageAsync(datas, vo.Page);
+            return await PageAsync(datas, vo.Page, 24);
         }
 
         public async Task<List<BasicInfoDto>> GetListRecommendsAsync(int id, string dierctor, string actor, string en, float rate, int size = 10)
