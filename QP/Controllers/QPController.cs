@@ -174,6 +174,7 @@ namespace QP.Controllers
         [HttpGet("/verify")]
         public IActionResult Verify()
         {
+            return Ok("dddd");
             string code = new Random().Next(999999).ToString("000000");
             HttpContext.Session.SetString("verify", code);
             using Bitmap image = new Bitmap(76, 32);
@@ -241,6 +242,11 @@ namespace QP.Controllers
             return File(b, "image/jpeg");
         }
 
+        [HttpGet("/test1")]
+        public IActionResult Test1()
+        {
+            return Ok("test1");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
