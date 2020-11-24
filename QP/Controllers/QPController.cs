@@ -8,7 +8,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Session;
 using QP.Bussiness;
 using QP.Bussiness.Enums;
 using QP.IBLL;
@@ -174,7 +173,6 @@ namespace QP.Controllers
         [HttpGet("/verify")]
         public IActionResult Verify()
         {
-            return Ok("dddd");
             string code = new Random().Next(999999).ToString("000000");
             HttpContext.Session.SetString("verify", code);
             using Bitmap image = new Bitmap(76, 32);
