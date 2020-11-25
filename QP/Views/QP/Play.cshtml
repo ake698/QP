@@ -59,7 +59,7 @@
                         <div class="stui-player__detail detail">
                             <ul class="more-btn">
                                 <li><a href="javascript:void(0);" class="mac_ulog btn btn-default" data-type="2" data-mid="1" data-id="43441">收藏<i class="icon iconfont icon-favorite hidden-xs"></i></a></li>
-                                <li><a href="javascript:;" class="btn btn-default" onclick="MAC.Gbook.Report('编号【@ViewBag.video.Id】名称【@ViewBag.video.Name】不能观看请检查修复，页面地址' + location.href)">报错<i class="icon iconfont icon-close hidden-xs"></i></a></li>
+                                <li><a href="javascript:;" class="btn btn-default" onclick="Report('编号【@ViewBag.video.Id】名称【@ViewBag.video.Name】不能观看请检查修复，页面地址' + location.href)">报错<i class="icon iconfont icon-close hidden-xs"></i></a></li>
                                 <li><a class="btn btn-default copylink" href="javascript:;">分享<i class="icon iconfont icon-share hidden-xs"></i></a></li>
                                 <li><a class="btn btn-default" href="@pre"><i class="icon iconfont icon-back hidden-xs"></i>上一集</a></li>
                                 <li><a class="btn btn-default" href="@next">下一集<i class="icon iconfont icon-more hidden-xs"></i></a></li>
@@ -197,6 +197,30 @@
                 </div>
                 <div class="stui-pannel_bd">
                     <ul class="stui-vodlist clearfix"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="stui-modal fade" id="modal-seport" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-right: 0px;">
+    <div class="stui-modal__dialog">
+        <div class="stui-modal__content">
+            <div class="stui-pannel clearfix">
+                <div class="stui-pannel-box clearfix">
+                    <div class="stui-pannel_hd"><div class="stui-pannel__head active bottom-line clearfix"><a href="javascript:;" class="more close pull-right" data-dismiss="modal" aria-hidden="true"><i class="icon iconfont icon-close"></i></a><h3 class="title">影片报错</h3></div></div><div class="stui-pannel_bd clearfix">
+                        <ul class="input-list">
+                            <form class="gbook_form">
+                                <li>
+                                    <textarea class="form-control gbook_content" id="content" name="content" rows="5"></textarea>
+                                </li><li>
+                                    <img class="pull-right" id="verify_img" src="/verify" alt="单击刷新">
+                                    <input type="text" class="form-control" name="verifycode" placeholder="请输入验证码" style="width: 120px;">
+                                </li><li><button type="button" class="btn btn-lg btn-block btn-primary message_submit">提交报错</button></li>
+                            </form>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

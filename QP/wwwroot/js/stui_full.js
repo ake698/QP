@@ -21,7 +21,11 @@
             data: { "content": content, "verifycode": verifycode },
             success: function (data) {
                 alert(data);
-                window.location.reload();
+                if (window.location.pathname == "/message") {
+                    window.location.reload();
+                } else {
+                    $("#modal-seport").modal('hide');
+                }
             },
             error: function (data) {
                 //console.log(data.responseText);
@@ -47,4 +51,10 @@ function SetFooter() {
     } else {
         $("#footer").removeClass("footer_active");
     }
+}
+
+function Report(data) {
+    $("#verify_img").click();
+    $("#content").val(data);
+    $("#modal-seport").modal('show');
 }
