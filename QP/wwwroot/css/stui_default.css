@@ -89,6 +89,12 @@ body{padding-top:80px}
 .stui-screen__min.first{ padding-left: 0; border-left: 0;}
 .stui-screen__min dd a{ display: inline-block; margin-top: 10px; margin-right: 16px;}
 
+/* footer */
+.footer_active{
+	position:fixed;
+	bottom : 0;
+}
+
 @media (min-width:768px){
 	.container{width:750px}
 }

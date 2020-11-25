@@ -34,7 +34,17 @@
     $("#verify_img").click(function () {
         $(this).attr("src", "/verify?" + Date.parse(new Date()));
     })
+
+    SetFooter();
 });
 
 
 
+function SetFooter() {
+    var footer_height = $("#footer").height(); 
+    if ($("#footer")[0].offsetTop < window.screen.height - footer_height) {
+        $("#footer").addClass("footer_active");
+    } else {
+        $("#footer").removeClass("footer_active");
+    }
+}
