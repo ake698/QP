@@ -30,8 +30,8 @@ namespace QP.BLL
                 datas = datas.Where(x => x.AreaName == vo.AreaName);
             if (!string.IsNullOrEmpty(vo.Year))
                 datas = datas.Where(x => x.Year == vo.Year);
-            if (!string.IsNullOrEmpty(vo.Letter))
-                datas = datas.Where(x => x.En.StartsWith(vo.Letter));
+            //if (!string.IsNullOrEmpty(vo.Letter))
+            //    datas = datas.Where(x => x.En.StartsWith(vo.Letter));
             return await PageAsync(datas, vo.Page, 24);
         }
 
@@ -39,9 +39,9 @@ namespace QP.BLL
         {
             List<BasicInfoDto> recommends;
             if (string.IsNullOrWhiteSpace(dierctor) || string.IsNullOrWhiteSpace(actor))
-                recommends = await GetListOrderByAsync(x => x.Rate == rate || x.En.StartsWith(en.Substring(0, 4)), x => x.Count, false, size + 1);
+                recommends = await GetListOrderByAsync(x => x.Rate == rate, x => x.Count, false, size + 1);
             else
-                recommends = await GetListOrderByAsync(wherePredicate: x => x.Actor == actor || x.Dierctor == dierctor || x.En.StartsWith(en.Substring(0, 4)), orderPredicate: x => x.Count, size: size + 1);
+                recommends = await GetListOrderByAsync(wherePredicate: x => x.Actor == actor || x.Dierctor == dierctor,orderPredicate: x => x.Count, size: size + 1);
             return recommends.Where(x => x.Id != id).ToList();
         }
 
