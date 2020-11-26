@@ -131,7 +131,7 @@ namespace QP.Controllers
         {
             var movies = await _basicInfoService.GetListOrderByAsync(x => x.SeriesTypeId == (int)SeriesTypeEnum.Movie, x => x.Count, false, 10);
             var tvs = await _basicInfoService.GetListOrderByAsync(x => x.SeriesTypeId == (int)SeriesTypeEnum.TV, x => x.Count, false, 10);
-            var results = await _basicInfoService.GetListPageAsync(wherePredicate: x => x.Name.Contains(vo.Key) || x.En.Contains(vo.Key), orderPredicate:x=>x.Count, page: vo.Page);
+            var results = await _basicInfoService.GetListPageAsync(wherePredicate: x => x.Name.Contains(vo.Key) || x.En.Contains(vo.Key) || x.Alias.Contains(vo.Key), orderPredicate:x=>x.Count, page: vo.Page);
 
             ViewBag.Movies = movies;
             ViewBag.tvs = tvs;
