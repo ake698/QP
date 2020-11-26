@@ -21,14 +21,14 @@
                         {
                             <li class="active clearfix">
                                 <div class="thumb">
-                                    <a class="v-thumb stui-vodlist__thumb lazyload" href="/detail/@video.Id" title="@video.Name" data-original="@video.Image">
+                                    <a class="v-thumb stui-vodlist__thumb lazyload" href="/vod/@video.Id@(".")html" title="@video.Name" data-original="@video.Image">
                                         <span class="play hidden-xs"></span>
                                         <span class="pic-text text-right">@video.Remark</span>
                                     </a>
                                 </div>
                                 <div class="detail">
                                     <h3 class="title">
-                                        <a href="/detail/@video.Id">@video.Name</a>
+                                        <a href="/vod/@video.Id@(".")html">@video.Name</a>
                                     </h3>
                                     <p>
                                         <span class="text-muted">导演：</span>@video.Dierctor
@@ -46,8 +46,8 @@
                                         </span>
                                     </p>
                                     <p class="margin-0">
-                                        <a class="btn btn-min btn-primary"  href="/play/@video.Id">立即播放</a>&nbsp;&nbsp;
-                                        <a class="btn btn-min btn-default"  href="/detail/@video.Id">查看详情</a>
+                                        <a class="btn btn-min btn-primary"  href="/play/@video.Id-1-1.html">立即播放</a>&nbsp;&nbsp;
+                                        <a class="btn btn-min btn-default"  href="/vod/@video.Id@(".")html">查看详情</a>
                                     </p>
                                 </div>
                             </li>
@@ -106,7 +106,7 @@
                         @foreach (var movie in @ViewBag.movies)
                         {
                             <li class="top-line-dot">
-                                <a class="text-overflow" href="/detail/@movie.Id" title="@movie.Name">
+                                <a class="text-overflow" href="/vod/@movie.Id@(".")html" title="@movie.Name">
                                     <span class="text-muted pull-right">@movie.Remark</span>
                                     @movie.Name
                                 </a>
@@ -130,7 +130,7 @@
                         @foreach (var tv in @ViewBag.tvs)
                         {
                             <li class="top-line-dot">
-                                <a class="text-overflow" href="/detail/@tv.Id" title="@tv.Name">
+                                <a class="text-overflow" href="/vod/@tv.Id@(".")html" title="@tv.Name">
                                     <span class="text-muted pull-right">@tv.Remark</span>
                                     @tv.Name
                                 </a>

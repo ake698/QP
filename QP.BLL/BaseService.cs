@@ -42,13 +42,13 @@ namespace QP.BLL
 
         public async Task<List<R>> GetListAsync()
         {
-            var entities =await _repository.GetAllAsync().ToListAsync();
+            var entities =await _repository.GetAll().ToListAsync();
             return _mapper.Map<List<R>>(entities);
         }
 
         public async Task<List<R>> GetListAsync(Expression<Func<T, bool>> predicate)
         {
-            var entities = await _repository.GetAllAsync()
+            var entities = await _repository.GetAll()
                 .Where(predicate)
                 .ToListAsync();
             return _mapper.Map<List<R>>(entities);

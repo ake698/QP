@@ -20,7 +20,7 @@ namespace QP.DAL
 
         public async Task<T> GetAsync(int id)
         {
-            var entity = await GetAllAsync().FirstOrDefaultAsync(m => m.Id == id);
+            var entity = await GetAll().FirstOrDefaultAsync(m => m.Id == id);
             //if (entity == null) throw new BussinessException($"There is no {typeof(T).Name} Entity with id = {id}");
             return entity;
         }
@@ -89,14 +89,14 @@ namespace QP.DAL
         }
 
         #region 查询
-        public IQueryable<T> GetAllAsync()
+        public IQueryable<T> GetAll()
         {
             return _db.Set<T>().Where(m => !m.IsDelete).AsNoTracking();
         }
 
         public IQueryable<T> GetAllByPageAsync(int pageSize = 10, int pageIndex = 0)
         {
-            return PageAsync(GetAllAsync(), pageSize, pageIndex);
+            return PageAsync(GetAll(), pageSize, pageIndex);
         }
         public IQueryable<T> PageAsync(IQueryable<T> datas, int pageSize = 10, int pageIndex = 0)
         {
@@ -108,8 +108,8 @@ namespace QP.DAL
         public IQueryable<T> GetByPredicate(Expression<Func<T, bool>> predicate)
         {
             if (predicate != null)
-                return GetAllAsync().Where(predicate);
-            return GetAllAsync();
+                return GetAll().Where(predicate);
+            return GetAll();
         }
         
         #endregion

@@ -18,7 +18,7 @@ namespace QP.IDAL
         Task Save();
 
         Task<T> GetAsync(int id);
-        IQueryable<T> GetAllAsync();
+        IQueryable<T> GetAll();
         IQueryable<T> GetAllByPageAsync(int pageSize = 10, int pageIndex = 0);
         IQueryable<T> GetByPredicate(Expression<Func<T, bool>> predicate);
         IQueryable<T> PageAsync(IQueryable<T> datas, int pageSize = 10, int pageIndex = 0);

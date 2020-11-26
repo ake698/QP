@@ -22,7 +22,7 @@ namespace QP.BLL
 
         public async Task<PageResultDto<BasicInfoDto>> GetListPageAsync(int seriesId, VodQueryVo vo)
         {
-            var datas = _repository.GetAllAsync()
+            var datas = _repository.GetAll()
                 .Where(x => x.SeriesTypeId == seriesId);
             if (vo.CategoryId.HasValue)
                 datas = datas.Where(x => x.CategoryTypeId == vo.CategoryId.Value);

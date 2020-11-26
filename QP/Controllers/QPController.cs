@@ -38,7 +38,6 @@ namespace QP.Controllers
         }
 
         [Route("/")]
-        [Route("/index")]
         public async Task<IActionResult> Index()
         {
             var recents = await _basicInfoService.GetListOrderByAsync(orderPredicate:x => x.LastModificationTime, size: 18);
@@ -66,12 +65,13 @@ namespace QP.Controllers
         }
 
 
-        [Route("/series/{id}")]
-        public async Task<IActionResult> Series(int id, [FromQuery]VodQueryVo vo)
+        [Route("/list/{seriesEn}.html")]
+        public async Task<IActionResult> Series(string seriesEn, [FromQuery]VodQueryVo vo)
         {
-            var categories = await _categoryService.GetListAsync(x => x.SeriesTypeId == id);
-            var vods = await _basicInfoService.GetListPageAsync(id, vo);
-            var series = await _seriesTypeService.GetAsync(id);
+            var series = await _seriesTypeService.GetAsync(seriesEn);
+            var categories = await _categoryService.GetListAsync(x => x.SeriesTypeId == series.Id);
+            var vods = await _basicInfoService.GetListPageAsync(series.Id, vo);
+            
             ViewBag.vo = vo;
             ViewBag.categories = categories;
             ViewBag.vods = vods;
@@ -80,7 +80,7 @@ namespace QP.Controllers
         }
 
 
-        [Route("/detail/{id}")]
+        [Route("/vod/{id}.html")]
         public async Task<IActionResult> Detail(int id)
         {
             var basicInfo = await _basicInfoService.GetAsync(id);
@@ -97,13 +97,13 @@ namespace QP.Controllers
             return View();
         }
 
-        [Route("/play/{id}")]
-        public async Task<IActionResult> Play(int id, VodPlayQueryVo vo)
+        [Route("/play/{id}-{resourceId}-{number}.html")]
+        public async Task<IActionResult> Play(int id, int resourceId, int number)
         {
             var basicInfo = await _basicInfoService.GetAsync(id);
             var playInfo = await _playInfoService.GetPlayInfos(id);
             var currentVod = playInfo
-                .Where(x => x.ResourceId == vo.ResourceId)
+                .Where(x => x.ResourceId == resourceId)
                 .FirstOrDefault();
             // 推荐
             var recommends = await _basicInfoService.GetListRecommendsAsync(id, basicInfo.Dierctor, basicInfo.Actor, basicInfo.En, basicInfo.Rate);
@@ -112,13 +112,15 @@ namespace QP.Controllers
             var currentAddress = "#";
             if(currentVod != null)
             {
-                currentAddress = currentVod.PlayAddresses[vo.Number - 1].Split("$")[1];
+                currentAddress = currentVod.PlayAddresses[number - 1].Split("$")[1];
             }
             ViewBag.video = basicInfo;
             ViewBag.play = playInfo;
             ViewBag.currentAddress = currentAddress;
             ViewBag.currentMax = currentVod.PlayAddresses.Length;
-            ViewBag.vo = vo;
+            //ViewBag.vo = vo;
+            ViewBag.number = number;
+            ViewBag.resourceId = resourceId;
             ViewBag.tops = tops;
             ViewBag.recommends = recommends;
             return View();

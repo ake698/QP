@@ -21,9 +21,9 @@
                         {
                             <li class="col-md-6 col-sm-4 col-xs-3">
                                 <div class="stui-vodlist__box">
-                                    <a class="stui-vodlist__thumb lazyload" href="/detail/@recent.Id" title="@recent.Name" data-original="@recent.Image"><span class="play hidden-xs"></span><span class="pic-text text-right">@recent.Remark</span></a>
+                                    <a class="stui-vodlist__thumb lazyload" href="/vod/@recent.Id@(".")html" title="@recent.Name" data-original="@recent.Image"><span class="play hidden-xs"></span><span class="pic-text text-right">@recent.Remark</span></a>
                                     <div class="stui-vodlist__detail">
-                                        <h4 class="title text-overflow"><a href="/detail/@recent.Id" title="@recent.Name">@recent.Name</a></h4>
+                                        <h4 class="title text-overflow"><a href="/vod/@recent.Id@(".")html" title="@recent.Name">@recent.Name</a></h4>
                                         <p class="text text-overflow text-muted hidden-xs">@recent.Actor</p>
                                     </div>
                                 </div>
@@ -34,7 +34,7 @@
                         <!--12个-->
                         @foreach (var recent in ViewBag.recentsSim)
                         {
-                            <li class="col-md-6 col-xs-4 padding-0"><a class="top-line-dot text-overflow" href="/detail/@recent.Id" title="@recent.Name"><i class="icon iconfont icon-more pull-right text-muted"></i>@recent.Name</a></li>
+                            <li class="col-md-6 col-xs-4 padding-0"><a class="top-line-dot text-overflow" href="/vod/@recent.Id@(".")html" title="@recent.Name"><i class="icon iconfont icon-more pull-right text-muted"></i>@recent.Name</a></li>
                         }
                     </ul>
                 </div>
@@ -47,13 +47,13 @@
                 <div class="stui-pannel-box clearfix">
                     <div class="stui-pannel_hd">
                         <div class="stui-pannel__head clearfix">
-                            <a class="more text-muted pull-right" href="/series/@recommend.SeriesType.Id">更多<i class="icon iconfont icon-more"></i></a>
-                            <h3 class="title"><img src="~/images/@recommend.SeriesType.Icon" /><a href="/series/@recommend.SeriesType.Id">@recommend.SeriesType.Name</a></h3>
+                            <a class="more text-muted pull-right" href="/list/@recommend.SeriesType.En@(".")html">更多<i class="icon iconfont icon-more"></i></a>
+                            <h3 class="title"><img src="~/images/@recommend.SeriesType.Icon" /><a href="/list/@recommend.SeriesType.En@(".")html">@recommend.SeriesType.Name</a></h3>
                             <!--电影分类-->
                             <ul class="nav nav-text pull-right hidden-sm hidden-xs">
                                 @foreach (var category in recommend.CategoryTypes)
                                 {
-                                    <li><a href="/series/@recommend.SeriesType.Id?category=@category.Id" class="text-muted">@category.Name</a><span class="split-line"></span></li>
+                                    <li><a href="/list/@recommend.SeriesType.En@(".")html?category=@category.Id" class="text-muted">@category.Name</a><span class="split-line"></span></li>
                                 }
                             </ul>
                         </div>
@@ -69,7 +69,7 @@
                             <div class="hidden-sm hidden-xs clearfix">
                                 <!--top 1 图片-->
                                 <ul class="col-xs-wide-45 stui-vodlist col-pd clearfix">
-                                    <li><a class="stui-vodlist__thumb lazyload" href="/detail/@recommend.RecommendTops[0].Id" title="@recommend.RecommendTops[0].Name" data-original="@recommend.RecommendTops[0].Image"><span class="play active hidden-xs"></span><span class="pic-tag pic-tag-h">Top1</span></a></li>
+                                    <li><a class="stui-vodlist__thumb lazyload" href="/vod/@recommend.RecommendTops[0].Id@(".")html" title="@recommend.RecommendTops[0].Name" data-original="@recommend.RecommendTops[0].Image"><span class="play active hidden-xs"></span><span class="pic-tag pic-tag-h">Top1</span></a></li>
                                 </ul>
                                 <!--电影排行榜-->
                                 <ul class="col-xs-wide-55 stui-vodlist__rank col-pd clearfix">
@@ -78,7 +78,7 @@
                                     }
                                     @for(int index=1;index <= recommend.RecommendTops.Count;index++)
                                     {
-                                        <li><a href="/detail/@recommend.RecommendTops[index-1].Id" title="@recommend.RecommendTops[index-1].Name"><div class="text text-overflow hidden-xs;width:60%" style="word-break: keep-all;white-space:nowrap;"><span class="badge @classes[index-1]">@index</span>@recommend.RecommendTops[index-1].Name</div></a></li>
+                                        <li><a href="/vod/@recommend.RecommendTops[index-1].Id@(".")html" title="@recommend.RecommendTops[index-1].Name"><div class="text text-overflow hidden-xs;width:60%" style="word-break: keep-all;white-space:nowrap;"><span class="badge @classes[index-1]">@index</span>@recommend.RecommendTops[index-1].Name</div></a></li>
                                     }
                                 </ul>
                             </div>
@@ -90,9 +90,9 @@
                                 {
                                     <li class="col-md-4 col-sm-4 col-xs-3">
                                         <div class="stui-vodlist__box">
-                                            <a class="stui-vodlist__thumb lazyload" href="/detail/@video.Id" title="@video.Name" data-original="@video.Image"><span class="play hidden-xs"></span><span class="pic-text text-right">@video.Name</span></a>
+                                            <a class="stui-vodlist__thumb lazyload" href="/vod/@video.Id@(".")html" title="@video.Name" data-original="@video.Image"><span class="play hidden-xs"></span><span class="pic-text text-right">@video.Name</span></a>
                                             <div class="stui-vodlist__detail">
-                                                <h4 class="title text-overflow"><a href="/detail/@video.Id" title="@video.Name">@video.Name</a></h4>
+                                                <h4 class="title text-overflow"><a href="/vod/@video.Id@(".")html" title="@video.Name">@video.Name</a></h4>
                                                 <p class="text text-overflow text-muted hidden-xs">@video.Actor</p>
                                             </div>
                                         </div>
@@ -102,9 +102,9 @@
                                 {
                                     <li class="col-md-4 col-sm-4 col-xs-3 visible-xs">
                                         <div class="stui-vodlist__box">
-                                            <a class="stui-vodlist__thumb lazyload" href="/detail/@mobile.Id" title="@mobile.Name" data-original="@mobile.Image"><span class="play hidden-xs"></span><span class="pic-text text-right">@mobile.Name</span></a>
+                                            <a class="stui-vodlist__thumb lazyload" href="/vod/@mobile.Id@(".")html" title="@mobile.Name" data-original="@mobile.Image"><span class="play hidden-xs"></span><span class="pic-text text-right">@mobile.Name</span></a>
                                             <div class="stui-vodlist__detail">
-                                                <h4 class="title text-overflow"><a href="/detail/@mobile.Id" title="@mobile.Name">@mobile.Name</a></h4>
+                                                <h4 class="title text-overflow"><a href="/vod/@mobile.Id@(".")html" title="@mobile.Name">@mobile.Name</a></h4>
                                                 <p class="text text-overflow text-muted hidden-xs">@mobile.Actor</p>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div class="stui-pannel_ft top-line visible-xs clearfix">
-                        <a class="text-muted" href="/series/@recommend.SeriesType.Id">查看更多<span>@recommend.SeriesType.Name</span><i class="icon iconfont icon-more"></i></a>
+                        <a class="text-muted" href="/list/@recommend.SeriesType.En@(".")html">查看更多<span>@recommend.SeriesType.Name</span><i class="icon iconfont icon-more"></i></a>
                     </div>
                 </div>
             </div>

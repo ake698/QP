@@ -25,7 +25,7 @@ namespace QP.BLL
 
         public async Task<List<PlayInfoDto>> GetPlayInfos(int basicInfoId)
         {
-            var result = await _repository.GetAllAsync()
+            var result = await _repository.GetAll()
                 .Where(x => x.BasicInfoId == basicInfoId)
                 .Include(x => x.Resource).ToListAsync();
             return _mapper.Map<List<PlayInfoDto>>(result);

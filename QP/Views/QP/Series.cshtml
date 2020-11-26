@@ -94,13 +94,13 @@
                     {
                         <li class="col-md-6 col-sm-4 col-xs-3">
                             <div class="stui-vodlist__box">
-                                <a class="stui-vodlist__thumb lazyload" href="/detail/@vod.Id" title="@vod.Name" data-original="@vod.Image">
+                                <a class="stui-vodlist__thumb lazyload" href="/vod/@vod.Id@(".")html" title="@vod.Name" data-original="@vod.Image">
                                     <span class="play hidden-xs"></span>
                                     <span class="pic-text text-right">@vod.Remark</span>
                                 </a>
                                 <div class="stui-vodlist__detail">
                                     <h4 class="title text-overflow">
-                                        <a href="/detail/@vod.Id" title="@vod.Name">@vod.Name</a>
+                                        <a href="/vod/@vod.Id@(".")html" title="@vod.Name">@vod.Name</a>
                                     </h4>
                                     <p class="text text-overflow text-muted hidden-xs">@vod.Actor</p>
                                 </div>
