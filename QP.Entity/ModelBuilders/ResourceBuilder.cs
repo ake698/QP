@@ -11,7 +11,10 @@ namespace QP.Entity.ModelBuilders
             b.ToTable("data_Resource");
             b.BuilderBaseEntity();
 
-            b.HasData(new Resource { Id=1, Name="OK", Link= "http://api.iokzy.com/", CreationTime = DateTime.Now });
+            b.HasData(
+                new Resource { Id=2, Name="稳定", Link= "http://api.iokzy.com/", CreationTime = DateTime.Now },
+                new Resource { Id=1, Name="高清", Link= "http://www.zuidazy4.net/", CreationTime = DateTime.Now }
+            );
         }
     }
 }
