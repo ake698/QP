@@ -248,6 +248,15 @@ namespace QP.Controllers
             return Ok("test1");
         }
 
+        [HttpGet("/test2")]
+        public IActionResult Test2(string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+                url = "https://www.zhuticlub.com:65/share/pdrrGgR0Z3uevJMw";
+            ViewBag.url = url;
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
