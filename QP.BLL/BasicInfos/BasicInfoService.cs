@@ -39,9 +39,9 @@ namespace QP.BLL
         {
             List<BasicInfoDto> recommends;
             if (string.IsNullOrWhiteSpace(dierctor) || string.IsNullOrWhiteSpace(actor))
-                recommends = await GetListOrderByAsync(x => x.Rate == rate, x => x.Count, false, size + 1);
+                recommends = await GetListOrderByAsync(x => x.Rate == rate || x.En.StartsWith(en.Substring(0, 3)), x => x.Count, false, size + 1);
             else
-                recommends = await GetListOrderByAsync(wherePredicate: x => x.Actor == actor || x.Dierctor == dierctor,orderPredicate: x => x.Count, size: size + 1);
+                recommends = await GetListOrderByAsync(wherePredicate: x => x.Actor == actor || x.Dierctor == dierctor || x.En.StartsWith(en.Substring(0, 3)), orderPredicate: x => x.Count, size: size + 1);
             return recommends.Where(x => x.Id != id).ToList();
         }
 

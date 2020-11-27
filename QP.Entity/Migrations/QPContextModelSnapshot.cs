@@ -54,216 +54,216 @@ namespace QP.Entity.Migrations
                         new
                         {
                             Id = 6,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6210),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2356),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(5693),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(1667),
                             Name = "动作片",
                             SeriesTypeId = 1
                         },
                         new
                         {
                             Id = 7,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6248),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2398),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6230),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2383),
                             Name = "喜剧",
                             SeriesTypeId = 1
                         },
                         new
                         {
                             Id = 8,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6251),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2401),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6250),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2399),
                             Name = "爱情片",
                             SeriesTypeId = 1
                         },
                         new
                         {
                             Id = 9,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6253),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2403),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6252),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2402),
                             Name = "科幻片",
                             SeriesTypeId = 1
                         },
                         new
                         {
                             Id = 10,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6256),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2405),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6254),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2404),
                             Name = "恐怖片",
                             SeriesTypeId = 1
                         },
                         new
                         {
                             Id = 11,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6258),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2407),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6257),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2406),
                             Name = "剧情片",
                             SeriesTypeId = 1
                         },
                         new
                         {
                             Id = 12,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6260),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2409),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6259),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2408),
                             Name = "战争片",
                             SeriesTypeId = 1
                         },
                         new
                         {
                             Id = 13,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6262),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2411),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6261),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2410),
                             Name = "国产剧",
                             SeriesTypeId = 2
                         },
                         new
                         {
                             Id = 14,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6264),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2413),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6263),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2412),
                             Name = "港剧",
                             SeriesTypeId = 2
                         },
                         new
                         {
                             Id = 15,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6266),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2415),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6265),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2414),
                             Name = "韩剧",
                             SeriesTypeId = 2
                         },
                         new
                         {
                             Id = 16,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6268),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2418),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6267),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2416),
                             Name = "欧美剧",
                             SeriesTypeId = 2
                         },
                         new
                         {
                             Id = 20,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6270),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2420),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6269),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2419),
                             Name = "纪录片",
                             SeriesTypeId = 2
                         },
                         new
                         {
                             Id = 21,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6272),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2422),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6271),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2421),
                             Name = "微电影",
                             SeriesTypeId = 2
                         },
                         new
                         {
                             Id = 22,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6274),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2424),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6273),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2423),
                             Name = "台湾剧",
                             SeriesTypeId = 2
                         },
                         new
                         {
                             Id = 23,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6277),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2426),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6276),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2425),
                             Name = "日剧",
                             SeriesTypeId = 2
                         },
                         new
                         {
                             Id = 25,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6279),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2428),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6278),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2427),
                             Name = "大陆综艺",
                             SeriesTypeId = 3
                         },
                         new
                         {
                             Id = 26,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6281),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2430),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6280),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2429),
                             Name = "港台综艺",
                             SeriesTypeId = 3
                         },
                         new
                         {
                             Id = 27,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6283),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2432),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6282),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2431),
                             Name = "日韩综艺",
                             SeriesTypeId = 3
                         },
                         new
                         {
                             Id = 28,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6285),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2434),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6284),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2433),
                             Name = "欧美综艺",
                             SeriesTypeId = 3
                         },
                         new
                         {
                             Id = 29,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6287),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2436),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6286),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2435),
                             Name = "国产动漫",
                             SeriesTypeId = 4
                         },
                         new
                         {
                             Id = 30,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6290),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2438),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6288),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2437),
                             Name = "日韩动漫",
                             SeriesTypeId = 4
                         },
                         new
                         {
                             Id = 31,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6292),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2441),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6291),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2440),
                             Name = "欧美动漫",
                             SeriesTypeId = 4
                         },
                         new
                         {
                             Id = 32,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6294),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2444),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6293),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2442),
                             Name = "港台动漫",
                             SeriesTypeId = 4
                         },
                         new
                         {
                             Id = 33,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6296),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2446),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 41, DateTimeKind.Local).AddTicks(6295),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 566, DateTimeKind.Local).AddTicks(2445),
                             Name = "其他",
                             SeriesTypeId = 4
                         });
@@ -335,12 +335,21 @@ namespace QP.Entity.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 38, DateTimeKind.Local).AddTicks(2124),
+                            Id = 2,
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 562, DateTimeKind.Local).AddTicks(8515),
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 38, DateTimeKind.Local).AddTicks(1601),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 562, DateTimeKind.Local).AddTicks(7987),
                             Link = "http://api.iokzy.com/",
-                            Name = "OK"
+                            Name = "稳定"
+                        },
+                        new
+                        {
+                            Id = 1,
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 562, DateTimeKind.Local).AddTicks(8550),
+                            IsDelete = false,
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 562, DateTimeKind.Local).AddTicks(8534),
+                            Link = "http://www.zuidazy4.net/",
+                            Name = "高清"
                         });
                 });
 
@@ -383,39 +392,40 @@ namespace QP.Entity.Migrations
                         {
                             Id = 1,
                             CreationTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            En = "dianying",
                             Icon = "icon_1.png",
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 35, DateTimeKind.Local).AddTicks(8100),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 560, DateTimeKind.Local).AddTicks(4895),
                             Name = "电影"
                         },
                         new
                         {
                             Id = 2,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 36, DateTimeKind.Local).AddTicks(7640),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 561, DateTimeKind.Local).AddTicks(4563),
                             En = "dianshiju",
                             Icon = "icon_2.png",
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 36, DateTimeKind.Local).AddTicks(7405),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 561, DateTimeKind.Local).AddTicks(4511),
                             Name = "电视剧"
                         },
                         new
                         {
                             Id = 3,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 36, DateTimeKind.Local).AddTicks(7927),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 561, DateTimeKind.Local).AddTicks(4868),
                             En = "zongyi",
                             Icon = "icon_3.png",
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 36, DateTimeKind.Local).AddTicks(7900),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 561, DateTimeKind.Local).AddTicks(4863),
                             Name = "综艺"
                         },
                         new
                         {
                             Id = 4,
-                            CreationTime = new DateTime(2020, 11, 26, 8, 58, 29, 36, DateTimeKind.Local).AddTicks(7930),
+                            CreationTime = new DateTime(2020, 11, 27, 10, 32, 32, 561, DateTimeKind.Local).AddTicks(4870),
                             En = "donghua",
                             Icon = "icon_4.png",
                             IsDelete = false,
-                            LastModificationTime = new DateTime(2020, 11, 26, 8, 58, 29, 36, DateTimeKind.Local).AddTicks(7928),
+                            LastModificationTime = new DateTime(2020, 11, 27, 10, 32, 32, 561, DateTimeKind.Local).AddTicks(4869),
                             Name = "动画"
                         });
                 });
@@ -582,7 +592,7 @@ namespace QP.Entity.Migrations
                     b.HasOne("QP.Entity.Resource", "Resource")
                         .WithMany()
                         .HasForeignKey("ResourceId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

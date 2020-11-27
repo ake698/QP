@@ -27,7 +27,9 @@ namespace QP.BLL
         {
             var result = await _repository.GetAll()
                 .Where(x => x.BasicInfoId == basicInfoId)
-                .Include(x => x.Resource).ToListAsync();
+                .Include(x => x.Resource)
+                .OrderBy(x => x.ResourceId)
+                .ToListAsync();
             return _mapper.Map<List<PlayInfoDto>>(result);
         }
     }

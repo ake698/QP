@@ -14,14 +14,12 @@ namespace QP.Entity.ModelBuilders
             b.HasOne(p => p.VideoBasicInfo)
                 .WithMany()
                 .IsRequired()
-                .HasForeignKey(p => p.BasicInfoId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(p => p.BasicInfoId);
 
             b.HasOne(p => p.Resource)
                 .WithMany()
                 .IsRequired()
-                .HasForeignKey(p => p.ResourceId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasForeignKey(p => p.ResourceId);
         }
     }
 }
