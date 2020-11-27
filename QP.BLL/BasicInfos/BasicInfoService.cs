@@ -32,6 +32,7 @@ namespace QP.BLL
                 datas = datas.Where(x => x.Year == vo.Year);
             //if (!string.IsNullOrEmpty(vo.Letter))
             //    datas = datas.Where(x => x.En.StartsWith(vo.Letter));
+            datas.OrderBy(x => x.LastModificationTime);
             return await PageAsync(datas, vo.Page, 24);
         }
 
