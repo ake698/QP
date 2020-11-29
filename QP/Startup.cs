@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,6 +45,9 @@ namespace QP
                 //"QP.DAL",
                 "QP.BLL"
             });
+
+            // 解决ViewBag中文乱码
+            services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.All));
 
             services.AddMvc(options =>
             {
