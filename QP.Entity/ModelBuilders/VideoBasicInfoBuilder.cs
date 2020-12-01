@@ -26,6 +26,11 @@ namespace QP.Entity.ModelBuilders
                 .HasForeignKey(p => p.CategoryTypeId)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            b.HasIndex(p => p.Name);
+            b.HasIndex(p => p.Dierctor);
+            b.HasIndex(p => p.Actor);
+            b.HasIndex(p => p.En);
+            b.HasIndex(p => p.Year);
         }
     }
 }
