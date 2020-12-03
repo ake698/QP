@@ -1,8 +1,11 @@
-﻿namespace QP.Entity
+﻿using System.Collections.Generic;
+
+namespace QP.Entity
 {
     public class VideoBasicInfo : BaseEntity
     {
         public CategoryType CategoryType { get; set; }
+        public virtual ICollection<VideoPlayInfo> VideoPlayInfos { get; set; }
         public int CategoryTypeId { get; set; }
         public string CategoryTypeNames { get; set; }
         public int SeriesTypeId { get; set; }

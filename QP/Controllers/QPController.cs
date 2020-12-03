@@ -140,6 +140,13 @@ namespace QP.Controllers
             return View();
         }
 
+        [HttpPost("/botsearch")]
+        public async Task<PageListResultDto<BasicInfoBotSearchDto>> Search(string key)
+        {
+            return await _basicInfoService.BotSearch(key);
+        }
+
+
         [HttpGet("/transfer")]
         public IActionResult Transfer()
         {

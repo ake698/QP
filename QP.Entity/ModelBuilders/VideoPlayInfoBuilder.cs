@@ -12,7 +12,7 @@ namespace QP.Entity.ModelBuilders
             b.BuilderBaseEntity();
 
             b.HasOne(p => p.VideoBasicInfo)
-                .WithMany()
+                .WithMany(p => p.VideoPlayInfos)
                 .IsRequired()
                 .HasForeignKey(p => p.BasicInfoId);
 

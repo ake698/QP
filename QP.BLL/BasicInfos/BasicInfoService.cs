@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using QP.Bussiness;
 using QP.Entity;
 using QP.IBLL;
@@ -52,6 +53,30 @@ namespace QP.BLL
             if (tops.Count < size)
                 tops.AddRange(await GetListOrderByAsync(x => x.SeriesTypeId == seriesId && x.Id != id, x => x.LastModificationTime,false, size-tops.Count));
             return tops;
+        }
+
+
+        public async Task<PageListResultDto<BasicInfoBotSearchDto>> BotSearch(string key)
+        {
+            var basicInfos = _repository.GetAll()
+                .Where(x => x.Name.Contains(key) || x.Alias.Contains(key));
+
+            var count = basicInfos.Count();
+
+            var results = await basicInfos.Take(5)
+                .Include(x => x.VideoPlayInfos)
+                .Where(x => x.VideoPlayInfos.Count > 0)
+                .ToListAsync();
+
+            return new PageListResultDto<BasicInfoBotSearchDto>
+            {
+                Count = count,
+                Datas = results.Select(x => new BasicInfoBotSearchDto
+                {
+                    Name = x.Name,
+                    Url = $"http://www.qianping.cc/play/{x.Id}-{x.VideoPlayInfos.First().ResourceId}-1.html"
+                }).ToList()
+            };
         }
     }
 }
