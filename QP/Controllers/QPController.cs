@@ -141,7 +141,7 @@ namespace QP.Controllers
         }
 
         [HttpPost("/botsearch")]
-        public async Task<PageListResultDto<BasicInfoBotSearchDto>> Search(string key)
+        public async Task<PageListResultDto<BasicInfoBotSearchDto>> Search([FromBody] string key)
         {
             return await _basicInfoService.BotSearch(key);
         }
