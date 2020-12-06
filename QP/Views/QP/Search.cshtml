@@ -46,8 +46,8 @@
                                         </span>
                                     </p>
                                     <p class="margin-0">
-                                        <a class="btn btn-min btn-primary"  href="/vod/@video.Id@(".")html">立即播放</a>&nbsp;&nbsp;
-                                        <a class="btn btn-min btn-default"  href="/vod/@video.Id@(".")html">查看详情</a>
+                                        <a class="btn btn-min btn-primary" href="/vod/@video.Id@(".")html">查看详情</a>
+                                        @*&nbsp;&nbsp;<a class="btn btn-min btn-default"  href="/vod/@video.Id@(".")html">查看详情</a>*@
                                     </p>
                                 </div>
                             </li>
@@ -76,6 +76,10 @@
             </li>
             @foreach (var pageNum in ViewBag.results.Pages)
             {
+                @if (ViewBag.results.CurrentPage == pageNum)
+                { PageActive = "active"; }
+                else
+                { PageActive = ""; }
                 <li class="hidden-xs @PageActive">
                     <a href="/search?key=@ViewBag.vo.Key&page=@pageNum">@pageNum</a>
                 </li>
