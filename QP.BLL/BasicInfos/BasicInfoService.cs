@@ -82,7 +82,7 @@ namespace QP.BLL
                 Datas = results.Select(x => new BasicInfoBotSearchDto
                 {
                     Name = x.Name,
-                    Url = $"{host}/play/{x.Id}-{x.VideoPlayInfos.First().ResourceId}-1.html"
+                    Url = $"{host}play/{x.Id}-{x.VideoPlayInfos.First().ResourceId}-1.html"
                 }).ToList()
             };
         }
