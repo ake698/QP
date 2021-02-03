@@ -15,6 +15,11 @@ namespace QP.BLL
     public class BasicInfoService : BaseService<VideoBasicInfo, BasicInfoDto>, IBasicInfoService
     {
         private readonly IBaseRepository<VideoBasicInfo> _repository;
+        private readonly IList<string> hosts = new List<string>
+        {
+            "http://ak.aiqianpin.cn/",
+            "http://bot.aiqianpin.cn/",
+        };
 
         public BasicInfoService(IBaseRepository<VideoBasicInfo> repository, IMapper mapper) : base(repository, mapper)
         {
@@ -68,13 +73,16 @@ namespace QP.BLL
                 .Where(x => x.VideoPlayInfos.Count > 0)
                 .ToListAsync();
 
+            var random = new Random();
+            var host = hosts[random.Next(2)];
+
             return new PageListResultDto<BasicInfoBotSearchDto>
             {
                 Count = count,
                 Datas = results.Select(x => new BasicInfoBotSearchDto
                 {
                     Name = x.Name,
-                    Url = $"http://www.qianping.cc/play/{x.Id}-{x.VideoPlayInfos.First().ResourceId}-1.html"
+                    Url = $"{host}/play/{x.Id}-{x.VideoPlayInfos.First().ResourceId}-1.html"
                 }).ToList()
             };
         }
